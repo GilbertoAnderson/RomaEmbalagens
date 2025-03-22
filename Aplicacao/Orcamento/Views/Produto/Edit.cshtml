@@ -1,0 +1,91 @@
+﻿@using Orcamento.Enums
+@model Orcamento.Models.ProdutoModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="py-5">
+    <div class="container">
+
+        <h1>@ViewBag.Nome</h1>
+        <hr />
+        <div class="form-horizontal">
+            <form method="post" asp-action="Edit" asp-controller="Produto" enctype="multipart/form-data">
+
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Nome:</label>
+                            <input type="text" asp-for="Nome" class="form-control shadow-none" />
+                            <span class="text-danger" asp-asp-validation-for="Nome"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="mb-1">
+
+                            <label class="form-label mt-3">Unidade:</label>
+
+                            @Html.DropDownList("idUnidade",
+                                     Html.GetEnumSelectList<UnidadeEnum>(),
+                                     "Selecione a unidade",
+                                     new { @class = "form-control" }
+                                     )
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-4">
+
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Descrição:</label>
+                            <textarea type="text" asp-for="Observacao" class="form-control shadow-none"> </textarea>
+                            <span class="text-danger" asp-asp-validation-for="Email"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        @Html.Partial("_ProdutoItem", new { id = @ViewBag.idProduto })
+                    </div>
+                </div> 
+                
+
+
+                <div class="row">
+                    <div class="col-lg-2">
+
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Status:</label>
+                            @Html.DropDownList("idStatus",
+                                     ViewBag.Status,
+                                     "Selecione o Status",
+                                     new { @class = "form-control" }
+                                     )
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <hr />
+                <row>
+                    <a asp-area="" asp-controller="Produto" asp-action="Index" class="btn btn-secondary">Cancelar</a>
+                    &nbsp;
+                    <input type="submit" value="Adicionar Materiais e Serviços" class="btn btn-primary" />
+                </row>
+
+            </form>
+
+        </div>
+    </div>
+</div>

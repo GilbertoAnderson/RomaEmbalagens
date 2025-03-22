@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewData["Title"] = "Novo Cliente";
+}
+@model Orcamento.Dto.ClienteDto
+
+<div class="py-5">
+    <div class="container">
+
+        <h1>Novo Cliente</h1>
+        <hr />
+        <div class="form-horizontal">
+            <form method="post" asp-action="Create" asp-controller="Cliente" enctype="multipart/form-data">
+
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Nome:</label>
+                            <input type="text" asp-for="Nome" class="form-control shadow-none" />
+                            <span class="text-danger" asp-asp-validation-for="Nome"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Telefone:</label>
+                            <input type="text" asp-for="Telefone" class="form-control shadow-none" />
+                            <span class="text-danger" asp-asp-validation-for="Telefone"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">CNPJ:</label>
+                            <input type="text" asp-for="CNPJ" class="form-control shadow-none" />
+                            <span class="text-danger" asp-asp-validation-for="CNPJ"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">CEP:</label>
+                            <input type="text" asp-for="CEP" class="form-control shadow-none" />
+                            <span class="text-danger" asp-asp-validation-for="CEP"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+				<row>
+                    <a asp-area="" asp-controller="Cliente" asp-action="Index" class="btn btn-secondary">Cancelar</a>
+                    &nbsp;
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                </row>
+
+            </form>
+
+        </div>
+    </div>
+</div>

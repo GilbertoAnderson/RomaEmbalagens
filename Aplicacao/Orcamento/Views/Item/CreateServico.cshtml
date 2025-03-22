@@ -1,0 +1,69 @@
+﻿@using Orcamento.Enums
+@{
+    ViewData["Title"] = "Servico";
+}
+@model Orcamento.Dto.ServicoDto
+
+<div class="py-5">
+    <div class="container">
+
+        <h1>Novo Usuario</h1>
+        <hr />
+        <div class="form-horizontal">
+            <form method="post" asp-action="CreateServico" asp-controller="Item" enctype="multipart/form-data">
+
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Serviço:</label>
+                            <input type="text" asp-for="Nome" class="form-control shadow-none" />
+                            <span class="text-danger" asp-asp-validation-for="Nome"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+				<div class="row">
+					<div class="col-lg-2">
+						<div class="mb-1">
+
+							<label class="form-label mt-3">Unidade:</label>
+
+							@Html.DropDownList("idUnidade",
+											Html.GetEnumSelectList<UnidadeEnum>(),
+											"Selecione a unidade",
+											new { @class = "form-control" }
+											)
+						</div>
+					</div>
+				</div>
+
+
+                <div class="row">
+                    <div class="col-lg-2">
+
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Valor:</label>
+                            <input type="text" asp-for="Valor" class="form-control shadow-none" />
+                            <span class="text-danger" asp-asp-validation-for="Email"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <hr />
+                <row>
+                    <a asp-area="" asp-controller="Item" asp-action="Index" class="btn btn-secondary">Cancelar</a>
+                    &nbsp;
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                </row>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+

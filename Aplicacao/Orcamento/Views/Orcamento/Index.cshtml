@@ -1,0 +1,69 @@
+﻿@model IEnumerable<OrcamentoModel>
+@{
+    ViewData["Title"] = "Orcamento";
+}
+
+<div class="py-5">
+    <div class="container">
+
+        <div class="row g-3">
+            <div class="col-11">
+                <div class="text-left">
+                    <h1 class="display-4">Lista de Orçamentos</h1>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="text-left">
+                    <a href="  @Url.Action("Index", "Home")   " title='Home' style="text-decoration:none">
+                        <h3><i class="bi bi-x-circle-fill" title="Retornar"></i></h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="text-left ">
+            <form method="post" asp-action="Index" asp-controller="Orcamento" enctype="multipart/form-data">
+                @Html.TextBox("filtro") &nbsp;
+                <input type="submit" value="Procurar" class="btn btn-secondary" /> &nbsp;
+                <a href="@Url.Action("Create")"> <input type="button" value="Novo" class="btn btn-primary" /></a>
+            </form>
+        </div>
+        <hr />
+        <div class="row">
+
+
+            @if (Model != null)
+            {
+                    @foreach (var orcamento in Model)
+                    {
+
+                        <div class="card w-80">
+                            <div class="card-body">
+                                <h3 class="card-title"> @orcamento.idCliente </h3>
+                                <p class="card-text">
+                                    <div style="border:2px">
+                                        <span>@orcamento.dtEntrega </span>
+                                        <span>@orcamento.ValorOrcado </span>
+                                        <span>@orcamento.idStatus </span>
+                                    </div>
+
+                                </p>
+                                <a href="@Url.Action("Edit", new { id = orcamento.idOrcamento }) " class="btn btn-secondary">editar ...</a>
+                            </div>
+                        </div>
+
+                    }
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

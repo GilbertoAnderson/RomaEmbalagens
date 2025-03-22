@@ -1,0 +1,137 @@
+﻿@model Orcamento.Models.ClienteModel
+@{
+    ViewData["Title"] = "Editar Cliente";
+}
+<div class="py-5">
+    <div class="container">
+
+        <h1>@ViewBag.Nome</h1>
+        <hr />
+        <div class="form-horizontal">
+            <form method="post" asp-action="Edit" asp-controller="Cliente" enctype="multipart/form-data">
+
+                <input type="hidden" asp-for="IdCliente" class="form-control" />
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Nome:</label>
+                            <input type="text" asp-for="Nome" class="form-control shadow-none"/>
+                            <span class="text-danger" asp-asp-validation-for="Nome"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Telefone:</label>
+					        <input type="text" asp-for="Telefone" class="form-control shadow-none" />
+                            <span class="text-danger" asp-asp-validation-for="Telefone"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">CNPJ:</label>
+					        <input type="text" asp-for="CNPJ" class="form-control shadow-none" />
+                            <span class="text-danger" asp-asp-validation-for="CNPJ"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">CEP:</label>
+					        <input type="text" asp-for="CEP" class="form-control shadow-none" />
+                            <span class="text-danger" asp-asp-validation-for="CEP"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-1">
+
+				        <div class="mb-1">
+					        <label class="form-label mt-3">UF:</label>
+					        <input type="text" asp-for="UF" class="form-control shadow-none" />
+					        <span class="text-danger" asp-asp-validation-for="UF"></span>
+				        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Endereco:</label>
+                            <input type="text" asp-for="Endereco" class="form-control shadow-none" />
+                            <span class="text-danger" asp-asp-validation-for="Endereco"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4">
+
+                <div class="mb-1">
+                    <label class="form-label mt-3">Bairro:</label>
+                    <input type="text" asp-for="Bairro" class="form-control shadow-none" />
+                    <span class="text-danger" asp-asp-validation-for="Bairro"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4">
+
+                <div class="mb-1">
+                    <label class="form-label mt-3">Cidade:</label>
+                    <input type="text" asp-for="Cidade" class="form-control shadow-none" />
+                    <span class="text-danger" asp-asp-validation-for="Cidade"></span>
+                </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        @Html.Partial("_Contatos", new { id = @ViewBag.idCliente })
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-2">
+
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Status:</label>
+                            @Html.DropDownList("idStatus",
+                                     ViewBag.Status,
+                                     "Selecione o Status",
+                                     new { @class = "form-control" }
+                                     )
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <hr />
+                <row>
+                    <a asp-area="" asp-controller="Cliente" asp-action="Index" class="btn btn-secondary">Cancelar</a>
+                    &nbsp;
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                </row>
+
+            </form>
+
+
+
+            <row>
+                <br /><br /><br /><br />
+            </row>
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = null;
+}
+<div style="border-style:dashed; border-color:gray; padding:10px; margin-top:10px;">
+    <row class="mt-2">
+        <div class="text-left " style="display: inline">,
+            <a href="@Url.Action("Create", new { id = @ViewBag.idProduto, Controller = "ProdutoItem"})" title='Novo Item'> <i class='glyphicon glyphicon-plus-sign'> </i></a>&nbsp;
+
+
+            <label class="form-label mt-3">Lista de Itens</label>
+
+
+        </div>
+    </row>
+
+    <row class="mt-2">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Produto</th>
+                    <th scope="col">Qtde</th>
+                    <th scope="col">Valor</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in @ViewBag.Itens)
+                {
+
+                    <tr>
+                        <td>@item.idItem</td>
+                        <td>@item.Quantidade</td>
+                        <td>@item.Valor</td>
+                        <td>
+                            <a href="@Url.Action("Edit", new { id = item.idProdutoItem , Controller = "ProdutoItem"})" title='Editar'> <i class='glyphicon glyphicon-pencil'> </i></a>&nbsp;
+ 
+                        </td>
+
+
+
+                        </tr>
+                    }
+            </tbody>
+        </table>
+    </row>
+
+</div>
+
+

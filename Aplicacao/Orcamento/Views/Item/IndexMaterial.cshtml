@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewData["Title"] = "Materiais";
+}
+
+@model IEnumerable<ItemModel>
+<div class="py-5">
+    <div class="container">
+
+        <div class="row g-3">
+            <div class="col-11">
+                <div class="text-left">
+                    <h1 class="display-4">Lista de Materiais</h1>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="text-left">
+                    <a href="  @Url.Action("Index", "Admin")   " title='Home' style="text-decoration:none">
+                        <h3><i class="bi bi-x-circle-fill" title="Retornar"></i></h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="text-left ">
+            <form method="post" asp-action="IndexMaterial" asp-controller="Item" enctype="multipart/form-data">
+                @Html.TextBox("filtro") &nbsp;
+                <input type="submit" value="Procurar" class="btn btn-secondary" /> &nbsp;
+                <a href="@Url.Action("CreateMaterial")"> <input type="button" value="Novo" class="btn btn-primary" /></a>
+            </form>
+        </div>
+        <hr />
+        <div class="row">
+
+
+            @if (Model != null)
+            {
+                @if (Model.Count() > 0)
+                {
+                    @foreach (var item in Model)
+                    {
+
+                        <div class="card w-80">
+                            <div class="card-body">
+                                <h3 class="card-title"> @item.Nome </h3>
+                                <p class="card-text">
+                                    <span>@item.Gramatura</span> - 
+                                    <span>@item.Formato</span>
+                                    <div style="border:2px">
+                                        <span>@item.Valor</span>
+                                    </div> 
+
+                                </p>
+                                <a href="@Url.Action("Edit", new { id = item.idItem }) " class="btn btn-secondary">editar ...</a>
+                            </div>
+                        </div>
+
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

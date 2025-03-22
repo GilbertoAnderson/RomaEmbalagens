@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="text-left">
+    <h1 class="display-4">Roma Embalagens</h1>
+</div>
+
+
+
+<div class="text-center">
+
+    <div class="row g-3">
+        <div class="col-4">
+           @*  @Url.Action("Index", "Orcamento") *@
+            <a href="@Url.Action("Index", "Orcamento")" title='Orçamentos' style="text-decoration:none">
+                <div class="cardhome text-center border-0 shadow rounded-0 p-3 my-3 mx-" style="max-width: 22rem; min-height:16rem;">
+                    <div class="icon">
+                        <h1><i class="bi bi-calculator" title="Orçamentos"></i></h1>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title fw-bold">Orçamentos</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+        <div class="col-4">
+             @* @Url.Action("Index", "OrdemServico") *@
+            <a href="  " title='Ordens Serviço' style="text-decoration:none">
+                <div class="cardhome text-center border-0 shadow rounded-0 p-3 my-3 mx-" style="max-width: 22rem; min-height:16rem;">
+                    <div class="icon">
+                        <h1><i class="bi bi-table" title="Ordens Serviço"></i></h1>
+                    </div>
+                    <div class="card-body">
+                            <p class="card-title fw-bold">Ordens Serviço</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+        <div class="col-4">
+                <a href="  @Url.Action("Index", "Cliente")   " title='Cliente' style="text-decoration:none">
+                <div class="cardhome text-center border-0 shadow rounded-0 p-3 my-3 mx-" style="max-width: 22rem; min-height:16rem;">
+					<div class="icon" >
+                        <h1> <i class="bi bi-people" title="Cliente"></i></h1>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title fw-bold">Clientes<br /><br /></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+        <div class="col-4">
+                <a href="  @Url.Action("Index", "Produto")   " title='Produto' style="text-decoration:none">
+                <div class="cardhome text-center border-0 shadow rounded-0 p-3 my-3 mx-" style="max-width: 22rem;min-height:16rem;">
+                    <div class="icon">
+                        <h1><i class="bi bi-grid" title="Produto"></i></h1>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title fw-bold">Produtos</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-4">
+            <a href="@Url.Action("Index", "Admin")" title='Admin' style="text-decoration:none">
+                <div class="cardhome text-center border-0 shadow rounded-0 p-3 my-3 mx-" style="max-width: 22rem;min-height:16rem;">
+                    <div class="icon">
+                        <h1><i class="bi bi-gear" title="Admin"></i></h1>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title fw-bold">Admin</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+

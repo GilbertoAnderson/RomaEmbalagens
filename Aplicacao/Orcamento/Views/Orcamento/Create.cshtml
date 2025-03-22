@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Novo Orçamento";
+}
+
+@model Orcamento.Dto.OrcamentoDto
+
+<div class="py-5">
+    <div class="container">
+
+        <h1>Novo Orçamento</h1>
+        <hr />
+        <div class="form-horizontal">
+            <form method="post" asp-action="Create" asp-controller="Orcamento" enctype="multipart/form-data">
+
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">nrOrcamento:</label>
+                            <input type="text" asp-for="nrOrcamento" value="@ViewBag.NrOrcamento" class="form-control shadow-none" />
+                            <span class="text-danger" asp-asp-validation-for="nrOrcamento"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2">
+
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Cliente:</label>
+                            @Html.DropDownList("idCliente",
+                                     ViewBag.Cliente,
+                                     "Selecione o Cliente",
+                                     new { @class = "form-control" }
+                                     )
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+                <row>
+                    <a asp-area="" asp-controller="Orcamento" asp-action="Index" class="btn btn-secondary">Cancelar</a>
+                    &nbsp;
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                </row>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,110 @@
+﻿
+@{
+    Layout = null;
+}
+<div style="border-style:dashed; border-color:gray; padding:10px; margin-top:10px;">
+    <row class="mt-2">
+        <div class="text-left " style="display: inline">,
+            <a href="@Url.Action("Create", new { id = @ViewBag.idCliente, Controller = "Contato"})" title='Novo contato'> <i class='glyphicon glyphicon-plus-sign'> </i></a>&nbsp;
+
+
+            <label class="form-label mt-3">Lista de Contatos</label>
+
+            @* <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalExemplo">
+                Abrir modal de demonstração
+            </button> *@
+
+        </div>
+    </row>
+
+    <row class="mt-2">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Fone</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var contato in @ViewBag.Contatos)
+                {
+
+                    <tr>
+                        <td>@contato.Nome</td>
+                        <td>@contato.Email</td>
+                        <td>@contato.Celular</td>
+                        <td>  <a href="@Url.Action("Edit", new { id = contato.idContato , Controller = "Contato"})" title='Editar'> <i class='glyphicon glyphicon-pencil'> </i></a>&nbsp;
+ 
+                        </td>
+
+
+
+                        </tr>
+                    }
+            </tbody>
+        </table>
+    </row>
+
+</div>
+
+
+<div class="modal" id="modal">
+
+</div>
+
+@section scripts {
+    <script>
+        $(function () {
+            $(".details").click(function () {
+                var id = $(this).attr("data-id");
+                $("#modal").load("Details?id=" + id, function () {
+                    $("#modal").modal();
+                })
+            });
+
+
+            $(".edit").click(function () {
+                var id = $(this).attr("data-id");
+                $("#modal").load("Edit?idContato=" + id, function () {
+                    $("#modal").modal();
+                })
+            });
+
+        })
+
+
+
+    </script>
+}
+
+
+
+
+
+@* 
+<!-- Modal -->
+<div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Título do modal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary">Salvar mudanças</button>
+            </div>
+        </div>
+    </div> 
+</div>
+
+
+ *@

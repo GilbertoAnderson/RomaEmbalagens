@@ -1,0 +1,83 @@
+﻿@model Orcamento.Models.ProdutoItemModel
+@{
+    ViewData["Title"] = "Novo Produto item";
+}
+<div class="py-5">
+    <div class="container">
+
+        <h1>Item do Produto</h1>
+        <hr />
+        <div class="form-horizontal">
+            <form method="post" asp-action="Create" asp-controller="ProdutoItem" enctype="multipart/form-data">
+
+                <input type="hidden" asp-for="idProduto" value="@ViewBag.idProduto" class="form-control" />
+
+ 
+                <div class="row">
+                    <div class="col-lg-2">
+
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Item:</label>
+                            @Html.DropDownList("idItem",
+                                     ViewBag.Item,
+                                     "Selecione o item",
+                                     new { @class = "form-control" }
+                                     )
+                        </div>
+                    </div>
+                </div> 
+
+
+
+
+
+                <div class="row">
+                    <div class="col-lg-1">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Quantidade:</label>
+                            <input type="decimal" asp-for="Quantidade" class="form-control shadow-none" />
+                            <span class="text-danger" asp-asp-validation-for="Quantidade"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-lg-1">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Valor:</label>
+                            <input type="decimal" asp-for="Valor" class="form-control shadow-none" />
+                            <span class="text-danger" asp-asp-validation-for="Valor"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Observacao:</label>
+                            <textarea type="text" asp-for="Observacao" class="form-control shadow-none"> </textarea>
+                            <span class="text-danger" asp-asp-validation-for="Observacao"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <hr />
+                <row>
+                    <a href="@Url.Action("Edit", new { id = @ViewBag.idProduto, Controller = "Produto"})" title='Cancelar'>
+                        <input type="button" value="Cancelar" class="btn btn-secondary" />
+                    </a>&nbsp;
+
+                    &nbsp;
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                </row>
+
+            </form>
+
+        </div>
+    </div>
+</div>

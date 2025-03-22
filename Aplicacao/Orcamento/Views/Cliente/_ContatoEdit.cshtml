@@ -1,0 +1,175 @@
+﻿@model Orcamento.Models.ContatoModel
+@{
+    Layout = null;
+}
+
+<div class="py-5">
+    <div class="container">
+        <div class="modal fade" id="ContatoEdit" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>@ViewBag.Nome</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" asp-action="Salvar" asp-controller="Contato" enctype="multipart/form-data">
+
+                            <input type="hidden" asp-for="idContato" class="form-control" />
+                            <input type="hidden" asp-for="idCliente" class="form-control" />
+
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="mb-1">
+                                        <label class="form-label mt-3">Nome:</label>
+                                        <input type="text" asp-for="Nome" class="form-control shadow-none" />
+                                        <span class="text-danger" asp-asp-validation-for="Nome"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="mb-1">
+                                        <label class="form-label mt-3">Email:</label>
+                                        <input type="text" asp-for="Email" class="form-control shadow-none" />
+                                        <span class="text-danger" asp-asp-validation-for="Email"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    <div class="mb-1">
+                                        <label class="form-label mt-3">Celular:</label>
+                                        <input type="text" asp-for="Celular" class="form-control shadow-none" />
+                                        <span class="text-danger" asp-asp-validation-for="Celular"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    <div class="mb-1">
+                                        <label class="form-label mt-3">Nascimento:</label>
+                                        <input type="date" asp-for="dtNascimento" class="form-control shadow-none" />
+                                        <span class="text-danger" asp-asp-validation-for="dtNascimento"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-lg-2">
+
+                                    <div class="mb-1">
+                                        <label class="form-label mt-3">Status:</label>
+                                        @Html.DropDownList("idStatus",
+                                                 ViewBag.Status,
+                                                 "Selecione o Status",
+                                                 new { @class = "form-control" }
+                                                 )
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <hr />
+                            <row>
+                                <a href="@Url.Action("Edit","Cliente", new { id = Model.idCliente })" title='Cancelar'>
+                                    <input type="button" value="Cancelar" class="btn btn-primary" />
+                                </a>
+                                &nbsp;
+
+                                <input type="submit" value="Salvar" class="btn btn-primary" />
+                            </row>
+
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1>@ViewBag.Nome</h1>
+        <hr />
+        <div class="form-horizontal">
+            <form method="post" asp-action="Salvar" asp-controller="Contato" enctype="multipart/form-data">
+
+                <input type="hidden" asp-for="idContato" class="form-control" />
+                <input type="hidden" asp-for="idCliente" class="form-control" />
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Nome:</label>
+                            <input type="text" asp-for="Nome" class="form-control shadow-none" />
+                            <span class="text-danger" asp-asp-validation-for="Nome"></span>
+                        </div>
+                    </div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-4">
+						<div class="mb-1">
+							<label class="form-label mt-3">Email:</label>
+                            <input type="text" asp-for="Email" class="form-control shadow-none" />
+                            <span class="text-danger" asp-asp-validation-for="Email"></span>
+						</div>
+					</div>
+				</div>
+
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Celular:</label>
+                            <input type="text" asp-for="Celular" class="form-control shadow-none" />
+                            <span class="text-danger" asp-asp-validation-for="Celular"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Nascimento:</label>
+                            <input type="date" asp-for="dtNascimento" class="form-control shadow-none" />
+                            <span class="text-danger" asp-asp-validation-for="dtNascimento"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+                    <div class="row">
+                        <div class="col-lg-2">
+
+                            <div class="mb-1">
+                                <label class="form-label mt-3">Status:</label>
+                                @Html.DropDownList("idStatus",
+                                         ViewBag.Status,
+                                         "Selecione o Status",
+                                         new { @class = "form-control" }
+                                         )
+                            </div>
+                        </div>
+                    </div>
+
+
+                <hr />
+                <row>
+                    <a href="@Url.Action("Edit","Cliente", new { id = Model.idCliente })" title='Cancelar'>
+                        <input type="button" value="Cancelar" class="btn btn-primary" />
+                    </a>
+                    &nbsp;  
+
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                </row>
+
+            </form>
+
+        </div>
+    </div>
+</div>

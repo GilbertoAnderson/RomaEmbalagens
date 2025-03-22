@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Orcamentos on-line - Roma Embalagens</title>
+
+    <meta name="description" content="Orçamento on-line">
+    <meta name="keywords" content="Orçamentos, budget, on-line, fácil, flexivel">
+    <meta name="author" content="Gilberto Anderson">
+
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - Roma Embalagens</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Orcamento.styles.css" asp-append-version="true" />
+
+    <!-- Última versão CSS compilada e minificada -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+</head>
+<body>
+
+
+     <header>
+        <nav class="navbar navbar-inverse mr-auto navbar-expand-sm navbar-toggleable-sm navbar-light  box-shadow mb-3">
+			<div class="container-fluid">
+				<!-- toggler -->
+				<button class="btn float-end" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
+					<i class="bi bi-list fs-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" style="color:lightslategray"></i>
+				</button>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><span class="navbar-logo">Roma Embalagens</span></a>
+                
+            </div>
+        </nav>
+    </header>
+
+	<div class="container">
+    <div class="offcanvas offcanvas-start w-25" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
+
+        <div class="offcanvas-header">
+            <h6 class="offcanvas-title d-none d-sm-block" id="offcanvas">Roma Embalagens</h6>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="offcanvas-body px-0">
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-truncate">
+                            <i class="fs-5 bi-house"></i><span class="ms-1 d-sm-inline">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action( "Index", "Orcamento")" class="nav-link text-truncate">
+                            <i class="fs-5 bi-calculator"></i><span class="ms-1 d-sm-inline">Orçamentos</span>
+                    </a>
+                </li>
+                <li>
+                        <a href="@Url.Action( "Index", "OrdemServico")" class="nav-link text-truncate">
+                        <i class="fs-5 bi-table"></i><span class="ms-1 d-sm-inline">Ordens Serviço</span>
+                    </a>
+				</li>
+				<li>
+                        <a href="@Url.Action( "Index", "Cliente")" class="nav-link text-truncate">
+						<i class="fs-5 bi-people"></i><span class="ms-1  d-sm-inline">Clientes</span>
+					</a>
+				</li>
+
+					<li>
+                        <a href="@Url.Action( "Index", "Produto")" class="nav-link text-truncate">
+							<i class="fs-5 bi-grid"></i><span class="ms-1 d-sm-inline">Produtos</span>
+						</a>
+					</li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle  text-truncate" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fs-5 bi-gear"></i><span class="ms-1 d-sm-inline">Administração</span>
+                    </a>
+                    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown">
+                            <li><a class="dropdown-item" href="@Url.Action( "IndexMaterial", "Item")">Materiais</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("IndexServico", "Item")">Serviços</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("Index", "ProdutoItem")">Itens de Produto</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                            <li><a class="dropdown-item" href="@Url.Action("Index", "Usuario")">Usuários</a></li>  
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            DBrasil Soluções &copy; 2025 - Orçamentos
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+
+
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('.dropdown-submenu a.test').on("click", function (e) {
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+        });
+
+
+    </script>
+}
