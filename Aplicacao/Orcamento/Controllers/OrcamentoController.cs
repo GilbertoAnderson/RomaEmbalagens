@@ -33,20 +33,17 @@ namespace Orcamento.Controllers
         }
 
 
-
         //// GET: ProdutoController
-        public IActionResult Index(string? filtro)
+        public IActionResult Index1(string? filtro)
         {
 
-            List<OrcamentoModel> orcamento = _context.tblOrcamento.Include(t => t.Clientes).ToList();
 
-            //List<Models.OrcamentoModel> orcamento = (from orc in _context.tblOrcamento
-            //                                         join cli in _context.tblCliente on orc.idCliente equals cli.IdCliente   
-            //                                         select orc ).ToList();
+            List<Models.OrcamentoModel> orcamento = (from orc in _context.tblOrcamento
+                                                     join cli in _context.tblCliente on orc.idCliente equals cli.IdCliente
+                                                     select orc).ToList();
 
-            //var orcamento = _context.tblOrcamento.Include(c => c.tblCliente).ToList();
+            // var orcamento = _context.tblOrcamento.Include(c => c.tblCliente).ToList();
 
-            //var orcamento = await _orcamentoInterface.GetAllOrcamento(filtro);
 
             //var orcamento = new OrcamentoModel()
             //{
@@ -54,6 +51,17 @@ namespace Orcamento.Controllers
             //   Cliente = _context.tblCliente.ToList()
 
             //};
+
+            return View(orcamento);
+
+        }
+
+        //// GET: ProdutoController
+        public async Task<ActionResult> Index(string? filtro)
+        {
+
+
+            var orcamento = await _orcamentoInterface.GetAllOrcamento(filtro);
 
             return View(orcamento);
 

@@ -52,8 +52,7 @@ namespace Orcamento.Services.Orcamento
 
                 if (filtro != null)
                 {
-                    //return await _context.tblOrcamento.Where(c => c.Cliente.Nome.Contains(filtro)
-                    //).OrderBy(c => c.nrOrcamento).ToListAsync();
+                    //return await _context.tblOrcamento.Where(c => c.Cliente.Nome.Contains(filtro)).OrderBy(c => c.nrOrcamento).ToListAsync();
 
                     return await _context.tblOrcamento.OrderBy(c => c.nrOrcamento).ToListAsync();
                 }
@@ -61,10 +60,11 @@ namespace Orcamento.Services.Orcamento
                 {
                     //return await _context.tblOrcamento.OrderBy(c => c.nrOrcamento).ToListAsync();
 
-                   // return await _context.tblOrcamento.Include(c => c.Cliente).OrderBy(c => c.nrOrcamento).ToListAsync();
-                    return await _context.tblOrcamento.OrderBy(c => c.nrOrcamento).ToListAsync();
-                    //var status = _context.tblStatus.FirstOrDefault(s => s.Objeto == "ORCAMENTO" && s.Descricao == "ATIVO");
-                    //return await _context.tblCliente.Where(c => c.idStatus == status.idStatus).OrderBy(c => c.Nome).ToListAsync();
+                    //return await _context.tblOrcamento.Include(c => c.Cliente).OrderBy(c => c.nrOrcamento).ToListAsync();
+                    //return await _context.tblOrcamento.OrderBy(c => c.nrOrcamento).ToListAsync();
+                    var status = _context.tblStatus.FirstOrDefault(s => s.Objeto == "ORCAMENTO" && s.Descricao == "Elaboracao");
+                    return await _context.tblOrcamento.Where(c => c.idStatus == status.idStatus).OrderBy(c => c.nrOrcamento).ToListAsync();
+
                 }
 
 

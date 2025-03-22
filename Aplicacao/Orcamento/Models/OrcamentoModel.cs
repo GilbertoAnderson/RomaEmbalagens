@@ -37,7 +37,7 @@ namespace Orcamento.Models
 
         public int idCliente { get; set; }
 
-        public required ClienteModel Clientes { get; set; }
+        //public required ClienteModel Clientes { get; set; }
 
 
         //public StatusModel Status { get; set; }

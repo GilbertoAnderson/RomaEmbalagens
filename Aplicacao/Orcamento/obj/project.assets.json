@@ -7943,11 +7943,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\giba_\\Documents\\Profissional\\Clientes\\RomaEmbalagens\\Aplicacao\\Orcamento\\Orcamento\\Orcamento.csproj",
+      "projectUniqueName": "C:\\Users\\giba_\\Documents\\Profissional\\Clientes\\RomaEmbalagens\\Aplicacao\\Orcamento\\Orcamento.csproj",
       "projectName": "Orcamento",
-      "projectPath": "C:\\Users\\giba_\\Documents\\Profissional\\Clientes\\RomaEmbalagens\\Aplicacao\\Orcamento\\Orcamento\\Orcamento.csproj",
+      "projectPath": "C:\\Users\\giba_\\Documents\\Profissional\\Clientes\\RomaEmbalagens\\Aplicacao\\Orcamento\\Orcamento.csproj",
       "packagesPath": "C:\\Users\\giba_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\giba_\\Documents\\Profissional\\Clientes\\RomaEmbalagens\\Aplicacao\\Orcamento\\Orcamento\\obj\\",
+      "outputPath": "C:\\Users\\giba_\\Documents\\Profissional\\Clientes\\RomaEmbalagens\\Aplicacao\\Orcamento\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

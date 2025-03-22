@@ -1,0 +1,126 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\giba_\\Documents\\Profissional\\Clientes\\RomaEmbalagens\\Aplicacao\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AFB42738-C300-4C37-9BB6-6659A0ABA431}|Orcamento\\Orcamento.csproj|c:\\users\\giba_\\documents\\profissional\\clientes\\romaembalagens\\aplicacao\\orcamento\\controllers\\orcamentocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFB42738-C300-4C37-9BB6-6659A0ABA431}|Orcamento\\Orcamento.csproj|solutionrelative:orcamento\\controllers\\orcamentocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFB42738-C300-4C37-9BB6-6659A0ABA431}|Orcamento\\Orcamento.csproj|c:\\users\\giba_\\documents\\profissional\\clientes\\romaembalagens\\aplicacao\\orcamento\\models\\orcamentomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFB42738-C300-4C37-9BB6-6659A0ABA431}|Orcamento\\Orcamento.csproj|solutionrelative:orcamento\\models\\orcamentomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFB42738-C300-4C37-9BB6-6659A0ABA431}|Orcamento\\Orcamento.csproj|c:\\users\\giba_\\documents\\profissional\\clientes\\romaembalagens\\aplicacao\\orcamento\\models\\orcamentoitemmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFB42738-C300-4C37-9BB6-6659A0ABA431}|Orcamento\\Orcamento.csproj|solutionrelative:orcamento\\models\\orcamentoitemmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFB42738-C300-4C37-9BB6-6659A0ABA431}|Orcamento\\Orcamento.csproj|c:\\users\\giba_\\documents\\profissional\\clientes\\romaembalagens\\aplicacao\\orcamento\\services\\orcamento\\orcamentoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFB42738-C300-4C37-9BB6-6659A0ABA431}|Orcamento\\Orcamento.csproj|solutionrelative:orcamento\\services\\orcamento\\orcamentoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFB42738-C300-4C37-9BB6-6659A0ABA431}|Orcamento\\Orcamento.csproj|c:\\users\\giba_\\documents\\profissional\\clientes\\romaembalagens\\aplicacao\\orcamento\\services\\ordemservico\\iordemservicointerface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFB42738-C300-4C37-9BB6-6659A0ABA431}|Orcamento\\Orcamento.csproj|solutionrelative:orcamento\\services\\ordemservico\\iordemservicointerface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFB42738-C300-4C37-9BB6-6659A0ABA431}|Orcamento\\Orcamento.csproj|c:\\users\\giba_\\documents\\profissional\\clientes\\romaembalagens\\aplicacao\\orcamento\\services\\cliente\\clienteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFB42738-C300-4C37-9BB6-6659A0ABA431}|Orcamento\\Orcamento.csproj|solutionrelative:orcamento\\services\\cliente\\clienteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OrcamentoModel.cs",
+              "DocumentMoniker": "C:\\Users\\giba_\\Documents\\Profissional\\Clientes\\RomaEmbalagens\\Aplicacao\\Orcamento\\Models\\OrcamentoModel.cs",
+              "RelativeDocumentMoniker": "Orcamento\\Models\\OrcamentoModel.cs",
+              "ToolTip": "C:\\Users\\giba_\\Documents\\Profissional\\Clientes\\RomaEmbalagens\\Aplicacao\\Orcamento\\Models\\OrcamentoModel.cs",
+              "RelativeToolTip": "Orcamento\\Models\\OrcamentoModel.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAswCcAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T14:38:19.66Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrcamentoItemModel.cs",
+              "DocumentMoniker": "C:\\Users\\giba_\\Documents\\Profissional\\Clientes\\RomaEmbalagens\\Aplicacao\\Orcamento\\Models\\OrcamentoItemModel.cs",
+              "RelativeDocumentMoniker": "Orcamento\\Models\\OrcamentoItemModel.cs",
+              "ToolTip": "C:\\Users\\giba_\\Documents\\Profissional\\Clientes\\RomaEmbalagens\\Aplicacao\\Orcamento\\Models\\OrcamentoItemModel.cs",
+              "RelativeToolTip": "Orcamento\\Models\\OrcamentoItemModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T14:38:11.735Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OrcamentoService.cs",
+              "DocumentMoniker": "C:\\Users\\giba_\\Documents\\Profissional\\Clientes\\RomaEmbalagens\\Aplicacao\\Orcamento\\Services\\Orcamento\\OrcamentoService.cs",
+              "RelativeDocumentMoniker": "Orcamento\\Services\\Orcamento\\OrcamentoService.cs",
+              "ToolTip": "C:\\Users\\giba_\\Documents\\Profissional\\Clientes\\RomaEmbalagens\\Aplicacao\\Orcamento\\Services\\Orcamento\\OrcamentoService.cs",
+              "RelativeToolTip": "Orcamento\\Services\\Orcamento\\OrcamentoService.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAQwDAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T14:23:43.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IOrdemServicoInterface.cs",
+              "DocumentMoniker": "C:\\Users\\giba_\\Documents\\Profissional\\Clientes\\RomaEmbalagens\\Aplicacao\\Orcamento\\Services\\OrdemServico\\IOrdemServicoInterface.cs",
+              "RelativeDocumentMoniker": "Orcamento\\Services\\OrdemServico\\IOrdemServicoInterface.cs",
+              "ToolTip": "C:\\Users\\giba_\\Documents\\Profissional\\Clientes\\RomaEmbalagens\\Aplicacao\\Orcamento\\Services\\OrdemServico\\IOrdemServicoInterface.cs",
+              "RelativeToolTip": "Orcamento\\Services\\OrdemServico\\IOrdemServicoInterface.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T14:23:28.996Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OrcamentoController.cs",
+              "DocumentMoniker": "C:\\Users\\giba_\\Documents\\Profissional\\Clientes\\RomaEmbalagens\\Aplicacao\\Orcamento\\Controllers\\OrcamentoController.cs",
+              "RelativeDocumentMoniker": "Orcamento\\Controllers\\OrcamentoController.cs",
+              "ToolTip": "C:\\Users\\giba_\\Documents\\Profissional\\Clientes\\RomaEmbalagens\\Aplicacao\\Orcamento\\Controllers\\OrcamentoController.cs",
+              "RelativeToolTip": "Orcamento\\Controllers\\OrcamentoController.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAQwEMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T14:19:51.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ClienteService.cs",
+              "DocumentMoniker": "C:\\Users\\giba_\\Documents\\Profissional\\Clientes\\RomaEmbalagens\\Aplicacao\\Orcamento\\Services\\Cliente\\ClienteService.cs",
+              "RelativeDocumentMoniker": "Orcamento\\Services\\Cliente\\ClienteService.cs",
+              "ToolTip": "C:\\Users\\giba_\\Documents\\Profissional\\Clientes\\RomaEmbalagens\\Aplicacao\\Orcamento\\Services\\Cliente\\ClienteService.cs",
+              "RelativeToolTip": "Orcamento\\Services\\Cliente\\ClienteService.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwCkAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T14:19:16.905Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -39,7 +39,7 @@ namespace Orcamento.Services.Cliente
 
 
 
-        public async Task<List<ClienteListDto>> GetCliente(string? filtro)
+        public async Task<List<ClienteModel>> GetCliente(string? filtro)
         {
             try
             {
