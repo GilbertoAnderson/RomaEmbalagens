@@ -780,7 +780,9 @@ begin
 	
 	/*    
 	 
-	 select * from  tblOrcamento
+	 select * from  tblOrcamento orc
+	 inner join tblCliente cli on orc.idcliente = cli.idcliente
+	 
 	 
 	 insert into tblOrcamento( idUsuario,idContato, idCliente, idFormaPagto, idStatus, 
 	                           nrOrcamento, dtCriacao, ValorOrcado, ValorDesconto, ValorFinal, Observacao )
@@ -812,6 +814,8 @@ begin
 		[idOrcamentoItem]	int identity(1,1)     not null,
 		[idOrcamento]		int                   not null,   
 		[idProduto]			int      			  not null,
+		[idUnidade]			int      			  not null,
+		[Nome]		    	varchar(120)          not null, 
 		[Sequencial]		int      			  not null, 
 		[Quantidade]		decimal(18,2)    	  not null,
 		[ValorUnitario]		int                   not null,
@@ -847,11 +851,11 @@ begin
 		select * from  tblOrcamentoItem
 
 
-	     insert into tblOrcamentoItem( idOrcamento, idProduto, Sequencial, Quantidade, ValorUnitario, Observacao)
+	     insert into tblOrcamentoItem( idOrcamento, idProduto, Sequencial, Quantidade, ValorUnitario, Observacao, idUnidade)
 	                 values(
 							 (select idOrcamento from tblOrcamento  where nrOrcamento   =  '250206001'),
 				             (select idProduto   from tblProduto    where Nome   = 'Caixa Pizza 25 Quadrada'),
-	                           1, 100, 3.00, 'observacao')
+	                           2, 100, 3.00, 'observacao',1)
 
 
 	*/

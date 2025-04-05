@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace Orcamento.Models
 {
@@ -24,6 +25,9 @@ namespace Orcamento.Models
         public string? Telefone { get; set; }
 
         public required int idStatus { get; set; }
+
+
+        //public List<OrcamentoModel> Orcamentos { get; set; }
 
 
 

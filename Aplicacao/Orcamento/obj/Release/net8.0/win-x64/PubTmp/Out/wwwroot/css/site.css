@@ -40,3 +40,10 @@ text-decoration:none;
     font-size: 3rem;
 }
 
+
+.cardorc .icon {
+    font-size: 2rem;
+    min-width: 35rem;
+    min-height: 15rem;
+}
+

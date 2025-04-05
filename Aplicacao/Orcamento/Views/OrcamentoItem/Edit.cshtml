@@ -1,0 +1,96 @@
+﻿@using Orcamento.Enums
+@model Orcamento.Models.OrcamentoItemModel
+
+@{
+    ViewData["Title"] = "Editar Produto";
+}
+
+<div class="py-5">
+    <div class="container">
+
+        <h1>Edição do produto</h1>
+        <hr />
+        <div class="form-horizontal">
+            <form method="post" asp-action="Edit" asp-controller="OrcamentoItem" enctype="multipart/form-data">
+
+                <input type="hidden" asp-for="idOrcamento" class="form-control" />
+                <input type="hidden" asp-for="idOrcamentoItem" class="form-control" />
+                <input type="hidden" asp-for="idProduto" class="form-control" />
+                
+
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="mb-1">
+                                <label class="form-label mt-3">Nome:</label>
+                                <input type="text" asp-for="Nome" class="form-control shadow-none" />
+                                <span class="text-danger" asp-asp-validation-for="Nome"></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <div class="mb-1">
+                                <label class="form-label mt-3">Ordem:</label>
+                                <input type="text" asp-for="Sequencial" class="form-control shadow-none" />
+                                <span class="text-danger" asp-asp-validation-for="Sequencial"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="mb-1">
+
+                                <label class="form-label mt-3">Unidade:</label>
+
+                                @Html.DropDownList("idUnidade",
+                                         Html.GetEnumSelectList<UnidadeEnum>(),
+                                         "Selecione a unidade",
+                                         new { @class = "form-control" }
+                                         )
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <div class="mb-1">
+                                <label class="form-label mt-3">Quantidade:</label>
+                                <input type="text" asp-for="Quantidade" class="form-control shadow-none" />
+                                <span class="text-danger" asp-asp-validation-for="Quantidade"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="mb-1">
+                                <label class="form-label mt-3">Valor Unitário:</label>
+                                <input type="text" asp-for="ValorUnitario" class="form-control shadow-none" />
+                                <span class="text-danger" asp-asp-validation-for="ValorUnitario"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-4">
+
+                            <div class="mb-1">
+                            <label class="form-label mt-3">Descrição:</label>
+                            <textarea type="text" asp-for="Observacao" class="form-control shadow-none"></textarea>
+                                <span class="text-danger" asp-asp-validation-for="Email"></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <hr />
+                    <row>
+
+                    <a href="@Url.Action("Edit", new { id = @ViewBag.idOrcamento, Controller = "Orcamento"})" title='Cancelar'>
+                        <input type="button" value="Cancelar" class="btn btn-secondary" />
+                    </a>&nbsp;
+                        <input type="submit" value="Salvar" class="btn btn-primary" />
+                    </row>
+
+                </form>
+
+        </div>
+    </div>
+</div>

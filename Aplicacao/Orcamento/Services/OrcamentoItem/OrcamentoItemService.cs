@@ -18,11 +18,12 @@ namespace Orcamento.Services.OrcamentoItem
         }
 
 
-        public async Task<List<OrcamentoItemModel>> GetOrcamentoItemId(int id)
+
+        public async Task<OrcamentoItemModel> GetOrcamentoItemId(int id)
         {
             try
             {
-                return await _context.tblOrcamentoItem.Where(c => c.idOrcamentoItem == id).ToListAsync();
+                return await _context.tblOrcamentoItem.FirstOrDefaultAsync(c => c.idOrcamentoItem == id);
             }
             catch (Exception ex)
             {
@@ -30,6 +31,18 @@ namespace Orcamento.Services.OrcamentoItem
             }
         }
 
+
+        public async Task<List<OrcamentoItemModel>> GetOrcamentoId(int id)
+        {
+            try
+            {
+                return await _context.tblOrcamentoItem.Where(c => c.idOrcamento == id).OrderBy(c =>c.Sequencial).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
 
         public async Task<List<OrcamentoItemModel>> GetOrcamentoItem(string? filtro)
@@ -43,6 +56,66 @@ namespace Orcamento.Services.OrcamentoItem
                 throw new Exception(ex.Message);
             }
         }
+
+        
+
+        public async Task<OrcamentoItemModel> ClonarProduto(OrcamentoItemModel orcamentoItem)
+        {
+            try
+            {
+
+                _context.Add(orcamentoItem);
+                await _context.SaveChangesAsync();
+
+                return orcamentoItem;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
+
+        public async Task<OrcamentoItemModel> Salvar(OrcamentoItemModel orcamentoItem)
+        {
+            try
+            {
+
+                _context.Update(orcamentoItem);
+                await _context.SaveChangesAsync();
+
+                return orcamentoItem;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
+
+
+        public async Task<OrcamentoItemModel> ExcluirItem(OrcamentoItemModel orcamentoItem)
+        {
+            try
+            {
+                //var orcamentoItem =  await _context.tblOrcamentoItem.FirstOrDefaultAsync(c => c.idOrcamentoItem == id);
+
+                _context.Remove(orcamentoItem);
+                var v = await _context.SaveChangesAsync();
+
+                return orcamentoItem;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
+
 
 
     }

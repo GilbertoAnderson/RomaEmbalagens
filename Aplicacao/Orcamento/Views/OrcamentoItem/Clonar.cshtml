@@ -1,0 +1,42 @@
+﻿@using Orcamento.Enums
+@model Orcamento.Models.OrcamentoItemModel
+
+@{
+    ViewData["Title"] = "Novo Produto";
+}
+
+<div class="py-5">
+    <div class="container">
+
+        <h1>Clonar Produto</h1>
+        <hr />
+        <div class="form-horizontal">
+
+            <form method="post" asp-action="Clonar" asp-controller="OrcamentoItem" enctype="multipart/form-data">
+
+                <div class="row">
+                    <div class="col-lg-4">
+
+                        <input type="hidden" asp-for="idOrcamento" value="@ViewBag.idOrcamento" class="form-control" />
+                        <div class="mb-1">
+                            @* <label class="form-label mt-3">Selecione o produto  modelo:</label> *@
+                            @Html.DropDownList("idProduto",
+                                     ViewBag.ProdutoModelo,
+                                     "Selecione o produto modelo",
+                                     new { @class = "form-control" }
+                                     )
+                                     <br />
+                        </div>
+                    </div>
+                </div>
+                <row>
+                    <div class="mb-1">
+                        <input type="submit" value="Clonar" class="btn btn-primary" />
+                    </div>
+                </row>
+
+            </form>
+
+        </div>
+    </div>
+</div>

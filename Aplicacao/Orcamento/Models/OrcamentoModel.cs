@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+
 namespace Orcamento.Models
 {
     public class OrcamentoModel
@@ -37,10 +38,16 @@ namespace Orcamento.Models
 
         public int idCliente { get; set; }
 
-        //public required ClienteModel Clientes { get; set; }
+        [NotMapped]
+        public virtual ClienteModel Clientes { get; set; }
 
 
-        //public StatusModel Status { get; set; }
+        [NotMapped]
+        public StatusModel Status { get; set; }
+
+
+        [NotMapped]
+        public OrcamentoItemModel OrcamentoItens { get; set; }
 
 
         //public List<ClienteModel> listaCliente { get; set; }

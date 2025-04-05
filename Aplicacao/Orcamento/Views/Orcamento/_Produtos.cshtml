@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = null;
+}
+<div style="border-style:dashed; border-color:gray; padding:10px; margin-top:10px;">
+    <row class="mt-2">
+        <div class="text-left" style="display: inline">
+            &nbsp;
+            <label class="form-label mt-3">Lista de Produtos</label>
+        </div>
+        <div class="text-right" style="display: inline">
+            &nbsp;
+            <a href="@Url.Action("Create", new { id = @ViewBag.idOrcamento, Controller = "OrcamentoItem"})" title='Novo produto'> <i class='glyphicon glyphicon-plus-sign' title="novo produto"> </i></a>&nbsp;
+            <a href="@Url.Action("Clonar", new { id = @ViewBag.idOrcamento, Controller = "OrcamentoItem"})" title='Clonar Produto' style="text-decoration:none"><i class="bi bi-camera-fill" title="clonar produto"></i></a>&nbsp;&nbsp;
+        </div>
+    </row>
+
+    <row class="mt-2">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Qtde</th>
+                    <th scope="col">Produto</th>
+                    <th scope="col">Vlr Unitario</th>
+                    <th scope="col">Vlr Total</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var produto in @ViewBag.Produtos)
+                {   
+                    
+                    var vlrTotal = produto.ValorUnitario * produto.Quantidade;
+                    
+
+                    <tr>
+                        <td>@produto.Quantidade</td>
+                        <td>@produto.Nome</td>
+                        <td>@produto.ValorUnitario</td>
+                        <td> 
+                            @Html.Raw(@vlrTotal.ToString("C2"))
+                        
+                        </td>
+                        <td>  
+                            <a href="@Url.Action("Edit", new { id = produto.idOrcamentoItem , Controller = "OrcamentoItem"})" title='Editar'> <i class='glyphicon glyphicon-pencil' title="editar"> </i></a>&nbsp;
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Delete", new { id = produto.idOrcamentoItem , Controller = "OrcamentoItem"})" title='Excluir' onclick="return DeleteItem();"> <i class='glyphicon glyphicon-remove' style="color:darkred;" title="excluir"> </i></a>&nbsp;
+                            &nbsp;&nbsp;
+                         </td>
+
+
+
+                        </tr>
+                    }
+            </tbody>
+        </table>
+    </row>
+
+</div>
+
+

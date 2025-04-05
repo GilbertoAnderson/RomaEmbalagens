@@ -29,7 +29,7 @@ namespace Orcamento.Services.Cliente
         {
             try
             {
-                return await _context.tblCliente.FirstOrDefaultAsync(c => c.IdCliente == id);
+                return await _context.tblCliente.FirstOrDefaultAsync(c => c.IdCliente == id);                                                 
             }
             catch (Exception ex)
             {

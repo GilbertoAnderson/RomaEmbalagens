@@ -108,12 +108,36 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbVxJbmRleFNlcnZpY28uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/giba_/Documents/Profissional/Clientes/RomaEmbalagens/Aplicacao/Orcamento/Views/OrcamentoItem/Clonar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JjYW1lbnRvSXRlbVxDbG9uYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/giba_/Documents/Profissional/Clientes/RomaEmbalagens/Aplicacao/Orcamento/Views/OrcamentoItem/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JjYW1lbnRvSXRlbVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/giba_/Documents/Profissional/Clientes/RomaEmbalagens/Aplicacao/Orcamento/Views/OrcamentoItem/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JjYW1lbnRvSXRlbVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/giba_/Documents/Profissional/Clientes/RomaEmbalagens/Aplicacao/Orcamento/Views/Orcamento/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JjYW1lbnRvXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/giba_/Documents/Profissional/Clientes/RomaEmbalagens/Aplicacao/Orcamento/Views/Orcamento/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JjYW1lbnRvXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/giba_/Documents/Profissional/Clientes/RomaEmbalagens/Aplicacao/Orcamento/Views/Orcamento/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JjYW1lbnRvXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/giba_/Documents/Profissional/Clientes/RomaEmbalagens/Aplicacao/Orcamento/Views/Orcamento/Index_oshicabra.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JjYW1lbnRvXEluZGV4X29zaGljYWJyYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/giba_/Documents/Profissional/Clientes/RomaEmbalagens/Aplicacao/Orcamento/Views/Orcamento/_Produtos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JjYW1lbnRvXF9Qcm9kdXRvcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/giba_/Documents/Profissional/Clientes/RomaEmbalagens/Aplicacao/Orcamento/Views/ProdutoItem/Create.cshtml]

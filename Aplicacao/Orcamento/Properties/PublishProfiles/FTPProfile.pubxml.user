@@ -7,7 +7,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAzSfhtaNTHE6cwTcgk/RQ9wAAAAACAAAAAAAQZgAAAAEAACAAAAC6Y/dmlc+iH7NyVyjfmMLSIBjZ7lumWjpwG+81bqEDcgAAAAAOgAAAAAIAACAAAAAmBllLq0TvcVXVq5KBkHxYmktzj8m5K+4ColmUGI4GtiAAAAD4yygVmUQfWNbmQyQ8cGqWhPELWIHGTZfICvqX69Rj40AAAADcvfUfBLZxvyp60hQ2BnFwNfRA9BYZxsQCGZXYvm4BbwcD+YQd3R7Q3R/7pTarkvlY0E438vj0CayBRfbMla4j</EncryptedPassword>
     <_PublishTargetUrl>ftp://win8097.site4now.net/</_PublishTargetUrl>
-    <History>True|2025-03-16T18:58:22.0754026Z||;False|2025-03-16T15:28:28.5943625-03:00||;False|2025-03-16T13:17:23.4375760-03:00||;True|2025-03-13T21:36:54.6497363-03:00||;False|2025-03-13T20:50:25.4267000-03:00||;False|2025-03-13T19:27:57.4591540-03:00||;False|2025-03-13T18:06:40.0409308-03:00||;False|2025-03-13T17:49:36.9433178-03:00||;False|2025-03-13T17:27:02.5417711-03:00||;True|2025-03-13T08:25:46.6021363-03:00||;</History>
+    <History>False|2025-04-05T18:54:28.5337801Z||;True|2025-03-16T15:58:22.0754026-03:00||;False|2025-03-16T15:28:28.5943625-03:00||;False|2025-03-16T13:17:23.4375760-03:00||;True|2025-03-13T21:36:54.6497363-03:00||;False|2025-03-13T20:50:25.4267000-03:00||;False|2025-03-13T19:27:57.4591540-03:00||;False|2025-03-13T18:06:40.0409308-03:00||;False|2025-03-13T17:49:36.9433178-03:00||;False|2025-03-13T17:27:02.5417711-03:00||;True|2025-03-13T08:25:46.6021363-03:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -888,22 +888,22 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>06/27/2024 23:55:48</publishTime>
     </File>
     <File Include="Orcamento.deps.json">
-      <publishTime>03/16/2025 15:29:42</publishTime>
+      <publishTime>04/05/2025 16:46:56</publishTime>
     </File>
     <File Include="Orcamento.dll">
-      <publishTime>03/16/2025 15:29:40</publishTime>
+      <publishTime>04/05/2025 16:46:54</publishTime>
     </File>
     <File Include="Orcamento.exe">
-      <publishTime>03/16/2025 15:29:40</publishTime>
+      <publishTime>04/05/2025 16:46:54</publishTime>
     </File>
     <File Include="Orcamento.pdb">
-      <publishTime>03/16/2025 15:29:40</publishTime>
+      <publishTime>04/05/2025 16:46:54</publishTime>
     </File>
     <File Include="Orcamento.runtimeconfig.json">
-      <publishTime>03/13/2025 08:42:22</publishTime>
+      <publishTime>04/05/2025 15:23:33</publishTime>
     </File>
     <File Include="Orcamento.staticwebassets.endpoints.json">
-      <publishTime>03/13/2025 08:42:22</publishTime>
+      <publishTime>04/05/2025 15:23:36</publishTime>
     </File>
     <File Include="pl/Humanizer.resources.dll">
       <publishTime>01/29/2022 12:04:10</publishTime>
@@ -1620,13 +1620,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/29/2022 12:04:12</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>03/16/2025 15:29:42</publishTime>
+      <publishTime>04/05/2025 16:46:57</publishTime>
     </File>
     <File Include="WindowsBase.dll">
       <publishTime>10/17/2024 16:15:16</publishTime>
     </File>
     <File Include="wwwroot/css/site.css">
-      <publishTime>03/13/2025 06:47:27</publishTime>
+      <publishTime>01/04/2025 20:14:08</publishTime>
     </File>
     <File Include="wwwroot/favicon.ico">
       <publishTime>01/01/0001 00:00:00</publishTime>

@@ -14,6 +14,5 @@ namespace Orcamento.Models
         public required int idStatus { get; set; }
 
 
-
     }
 }

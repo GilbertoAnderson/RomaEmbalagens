@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Orcamento")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0beac2eb0d5ca618053aac6aa07ace7a95056695")]
 [assembly: System.Reflection.AssemblyProductAttribute("Orcamento")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Orcamento")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

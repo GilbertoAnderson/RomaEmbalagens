@@ -1,4 +1,5 @@
 ﻿using Orcamento.Models;
+using Orcamento.Dto;
 
 namespace Orcamento.Services.Orcamento
 {
@@ -9,9 +10,13 @@ namespace Orcamento.Services.Orcamento
 
         Task<List<OrcamentoModel>> GetAllOrcamento(string? filtro);
 
+        //Task<List<OrcamentoListaDto>> GetListOrcamento();
+
+
         Task<List<OrcamentoModel>> GetQtdeOrcamento();
 
-        
+
+        Task<OrcamentoModel> Salvar(OrcamentoModel orcamento);
 
     }
 }

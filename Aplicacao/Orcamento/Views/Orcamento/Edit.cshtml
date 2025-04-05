@@ -1,0 +1,257 @@
+﻿@using Orcamento.Enums
+@model Orcamento.Models.OrcamentoModel
+@{
+    // ViewData["Title"] = "Editar Orçamento";
+}
+<div class="py-5">
+    <div class="container">
+
+        <h1>Orcamento: @ViewBag.NrOrcamento - @ViewBag.Nome</h1>
+        <hr />
+
+        <div class="form-horizontal">
+            <form method="post" asp-action="Edit" asp-controller="Orcamento" enctype="multipart/form-data">
+                
+                <input type="hidden" asp-for="idOrcamento" class="form-control" />
+                <input type="hidden" asp-for="idCliente" class="form-control" />
+                <input type="hidden" asp-for="nrOrcamento" class="form-control" />
+
+                <div class="row" style="display: flex;">
+                    <div class="col-lg-2" style="max-width:200px;">
+                            <label class="form-label mt-3">Orçamento:</label>
+                            <input type="text" asp-for="nrOrcamento" value="@ViewBag.NrOrcamento" class="form-control shadow-none" readonly />
+                            <span class="text-danger" asp-asp-validation-for="nrOrcamento"></span>
+                     </div>
+                    <div class="col-2">
+                        <a href="  @Url.Action("Clone", "Orcamento", new { id = @ViewBag.idOrcamento } )   " title='Clonar Orçamento' style="text-decoration:none">
+                            <div class="icon" >
+                                <h1><i class="bi bi-camera" title="clonar pedido"></i></h1>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4">
+
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Cliente:</label>
+                            <input type="text" asp-for="Clientes.Nome" value="@ViewBag.Nome" class="form-control shadow-none" readonly />
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-4">
+
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Contato:</label>
+                            @Html.DropDownList("idContato",
+                                     ViewBag.Contatos,
+                                     "Selecione o Contato",
+                                     new { @class = "form-control" }
+                                     )
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Data Criação:</label>
+                            <input type="date" asp-for="dtCriacao" class="form-control shadow-none" readonly />
+                            <span class="text-danger" asp-asp-validation-for="dtCriacao"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Data Entrega:</label>
+                            <input type="date" asp-for="dtEntrega" class="form-control shadow-none" />
+                            <span class="text-danger" asp-asp-validation-for="dtEntrega"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <d
+
+                <div class="row">
+                    <br />
+                    <div class="col-lg-8 mb-1">
+                        @Html.Partial("_Produtos", new { id = @ViewBag.idOrcamento })
+                    </div>
+                    <br />
+                </div>
+
+
+                @* <div class="row" style="border-color:fuchsia; border:solid 2px"> *@
+                <div class="row"     >
+                    <!-- lado  esquerdo-->
+                    <div class ="col-lg-2" >
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-1">
+                                    <label class="form-label mt-3">Valor dos produtos:</label>
+                                    <input type="text" asp-for="ValorOrcado" class="form-control shadow-none" readonly />
+                                    <span class="text-danger" asp-asp-validation-for="ValorOrcado"></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-1">
+                                    <label class="form-label mt-3">Valor do desconto:</label>
+                                    <input type="text" asp-for="ValorDesconto" class="form-control shadow-none" />
+                                    <span class="text-danger" asp-asp-validation-for="ValorDesconto"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-1">
+                                    <label class="form-label mt-3">Valor final:</label>
+                                    <input type="text" asp-for="ValorFinal" class="form-control shadow-none" readonly />
+                                    <span class="text-danger" asp-asp-validation-for="ValorFinal"></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-12">
+
+                                <div class="mb-1">
+                                    <label class="form-label mt-3">Forma de pagamento:</label>
+
+                                    @Html.DropDownList("idFormaPagto",
+                                             Html.GetEnumSelectList<FormaPagtoEnum>(),
+                                             "Selecione a forma de pagto",
+                                             new { @class = "form-control" }
+                                             )
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-lg-12">
+
+                                <div class="mb-1">
+                                    <label class="form-label mt-3">Status:</label>
+                                    @Html.DropDownList("idStatus",
+                                             ViewBag.Status,
+                                             "Selecione o Status",
+                                             new { @class = "form-control" }
+                                             )
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <!-- lado direito  -->
+                    <div class="col-lg-6" >
+
+
+                        <div class="row">
+                            <div class="col-lg-12" >
+                                <div class="mb-1">
+                                    <label class="form-label mt-3">Observação:</label>
+                                    <textarea type="text" asp-for="Observacao" class="form-control shadow-none" rows="6" cols="450" > </textarea>
+                                    <span class="text-danger" asp-asp-validation-for="Observacao"></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- ícones  -->
+                        <div class="row" style="display: flex; justify-content: space-around">
+
+                            <div class="col-2">
+                                <a href="@Url.Action("Salvar", "Orcamento")" title='Imprimir' style="text-decoration:none">
+                                    <div class="icon">
+                                        <h1><i class="bi bi-printer" title="Imprimir"></i></h1>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-2">
+                                <a href="@Url.Action("Salvar", "Orcamento")" title='E-mail' style="text-decoration:none">
+                                    <div class="icon">
+                                        <h1><i class="bi bi-envelope" title="e-mail"></i></h1>
+                                    </div>
+                                </a>
+                            </div>
+
+
+                            <div class="col-2">
+                                <a href="@Url.Action("Salvar", "Orcamento")" title='Whatsapp' style="text-decoration:none">
+                                    <div class="icon">
+                                        <h1><i class="bi bi-whatsapp" title="Whatsapp"></i></h1>
+                                    </div>
+                                </a>
+                            </div>
+
+
+                            <div class="col-2">
+                                    <a href="@Url.Action("Salvar", "Orcamento")" title='Salvar' style="text-decoration:none">
+                                        <div class="icon">
+                                            <h1><i class="bi bi-floppy" title="Salvar"></i></h1>
+                                        </div>
+                                    </a>
+                            </div>
+
+                        </div>
+
+                    
+                    
+                    </div>
+                </div>
+
+
+
+                <hr />
+                <row>
+                    <a asp-area="" asp-controller="Orcamento" asp-action="Index" class="btn btn-secondary">Cancelar</a>
+                    &nbsp;
+                    <input type="submit" value="Salvar" class="btn btn-primary"/>
+                    &nbsp;
+
+                </row>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts {
+
+    <script type="text/javascript">
+
+
+
+        function DeleteItem() {
+
+
+            var r = confirm("Atenção\n\nConfirme a exclusão deste item?");
+
+            if (r == false) {
+                return false;
+            }
+
+        }
+
+    </script>
+}
+
+

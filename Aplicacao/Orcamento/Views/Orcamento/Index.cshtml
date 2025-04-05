@@ -38,13 +38,14 @@
 
                         <div class="card w-80">
                             <div class="card-body">
-                                <h3 class="card-title"> @orcamento.idCliente </h3>
+                                <h3 class="card-title"> @orcamento.Clientes.Nome </h3>
                                 <p class="card-text">
-                                    <div style="border:2px">
-                                        <span>@orcamento.dtEntrega </span>
-                                        <span>@orcamento.ValorOrcado </span>
-                                        <span>@orcamento.idStatus </span>
-                                    </div>
+                                <div style="border:2px">
+                                    <span>data: @orcamento.dtCriacao.ToString("dd/MM/yyyy") </span> &nbsp; &nbsp; &nbsp; &nbsp;
+                                    <span>status: @orcamento.Status.Descricao </span><br />
+                                    @* <span>produto: ViewBag.produto[@orcamento.idOrcamento]</span><br /> *@
+                                    <span>valor orçado: @orcamento.ValorOrcado </span>
+                                </div>
 
                                 </p>
                                 <a href="@Url.Action("Edit", new { id = orcamento.idOrcamento }) " class="btn btn-secondary">editar ...</a>
