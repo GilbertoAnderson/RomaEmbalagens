@@ -14,6 +14,9 @@ using Orcamento.Data;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Configuration;
 using Orcamento.Enums;
+using System.Net.NetworkInformation;
+using Orcamento.Services.Dominios;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Orcamento.Controllers
 {
@@ -25,17 +28,20 @@ namespace Orcamento.Controllers
         private readonly IOrcamentoInterface _orcamentoInterface;
         private readonly IOrcamentoItemInterface _orcamentoItemInterface;
         private readonly IContatoInterface _contatoInterface;
+        private readonly IDominiosInterface _dominioInterface;
 
         private readonly AppDBContext _context;
 
         public OrcamentoController( IStatusInterface statusInterface, IClienteInterface clienteInterface,
-             IOrcamentoInterface orcamentoInterface, IOrcamentoItemInterface orcamentoItemInterface, IContatoInterface contatoInterface, AppDBContext context)
+             IOrcamentoInterface orcamentoInterface, IOrcamentoItemInterface orcamentoItemInterface, 
+             IContatoInterface contatoInterface, IDominiosInterface dominioInterface, AppDBContext context)
         {
             _statusInterface = statusInterface;
             _clienteInterface = clienteInterface;
             _orcamentoInterface = orcamentoInterface;
             _orcamentoItemInterface = orcamentoItemInterface;
             _contatoInterface = contatoInterface;
+            _dominioInterface = dominioInterface;
             _context = context;
 
         }
@@ -141,14 +147,17 @@ namespace Orcamento.Controllers
                     nrOrcamento = _orcamento.nrOrcamento,
                     idCliente = _orcamento.idCliente,
                     idStatus = status.idStatus,
+                    idUsuario = 1,
+                    idContato = 1,
+                    idFormaPagto = 1,
                     dtCriacao = DateTime.Now,
                     dtValidade = DateTime.Now.AddDays(30)
 
                 };
 
-                //  var cliente = await _clienteInterface.NovoCliente(_orcamentoNovo);
+                var orcamento = await _orcamentoInterface.NovoOrcamento(_orcamentoNovo);
 
-                return RedirectToAction("Edit", new { id = _orcamentoNovo.idOrcamento });
+                return RedirectToAction("Edit", new { id = orcamento.idOrcamento, whatsapp= "" });
 
             }
             else
@@ -162,7 +171,7 @@ namespace Orcamento.Controllers
 
 
         // GET: ClienteController/Edit/5
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(int id, string whatsapp)
         {
 
             var orcamento = await _orcamentoInterface.GetOrcamentoId(id);
@@ -179,14 +188,44 @@ namespace Orcamento.Controllers
             var OrcamentoItem = await _orcamentoItemInterface.GetOrcamentoId(orcamento.idOrcamento);
 
             //.................................... calcula valor orcado
+
+            var margem = await _dominioInterface.GetDominio("MARGEM");
+            var impostos = await _dominioInterface.GetDominio("IMPOSTO");
+
             decimal _vlrProdutos = 0;   
             foreach (OrcamentoItemModel _orcamentoItem in OrcamentoItem)
             {
                 _vlrProdutos = _vlrProdutos + (_orcamentoItem.Quantidade * _orcamentoItem.ValorUnitario) ;
             };
 
+
+            decimal _percMargem = Convert.ToDecimal(margem.Descricao);
+            decimal _percImposto = (decimal)orcamento.percImposto;
+            if (orcamento.percImposto == 0)
+            {
+                _percImposto = Convert.ToDecimal(impostos.Descricao);
+            }
+
+
+            decimal _vlrDesconto = (decimal)orcamento.ValorDesconto;
+            decimal _vlrMargem = _vlrProdutos * _percMargem / 100;
+            decimal _vlrImposto = (_vlrProdutos + _vlrMargem) * _percImposto / 100;
+            decimal _vlrFinal = _vlrProdutos + _vlrMargem + _vlrImposto - _vlrDesconto;
+
+            //.................. remove as casas decimais 
+            _vlrProdutos = Math.Round(Convert.ToDecimal(_vlrProdutos.ToString()), 2);
+            _vlrImposto = Math.Round(Convert.ToDecimal(_vlrImposto.ToString()), 2);
+            _vlrMargem = Math.Round(Convert.ToDecimal(_vlrMargem.ToString()), 2);
+            _vlrFinal = Math.Round(Convert.ToDecimal(_vlrFinal.ToString()), 2);
+
+
+            orcamento.percMargem = _percMargem;
+            orcamento.percImposto = _percImposto;
+
             orcamento.ValorOrcado = _vlrProdutos;
-            orcamento.ValorFinal = _vlrProdutos - orcamento.ValorDesconto;
+            orcamento.ValorMargem = _vlrMargem;
+            orcamento.ValorImposto = _vlrImposto;
+            orcamento.ValorFinal = _vlrFinal;
 
 
             //.................................... identifca status de orcamentos
@@ -199,14 +238,50 @@ namespace Orcamento.Controllers
 
 
 
-            ViewBag.Produtos = OrcamentoItem;
 
+
+            var contato = await _contatoInterface.GetContatoId(orcamento.idCliente);
+
+            string texto = "";
+            texto = texto + "Orcamento: " + orcamento.nrOrcamento + "\r\n";
+            texto = texto + cliente.Nome + "\r\n";
+            texto = texto + contato.Nome + "\r\n";
+
+
+            //...................................................................... itens do produto
+            texto = texto + "--------------------------- " + "\r\n";
+            texto = texto + "Itens " + "\r\n";
+            texto = texto + "--------------------------- " + "\r\n";
+            texto = texto + " QTDE | DESCRICAO | VALOR " + "\r\n";
+            texto = texto + "--------------------------- " + "\r\n";
+
+            foreach (OrcamentoItemModel _orcamentoItem in OrcamentoItem)
+            {
+                texto = texto + _orcamentoItem.Quantidade.ToString("000,00") + " | " + _orcamentoItem.Nome + " | " + (_orcamentoItem.Quantidade * _orcamentoItem.ValorUnitario) + "\r\n";
+            };
+            texto = texto + "--------------------------- " + "\r\n";
+            texto = texto + "Total Produtos " + orcamento.ValorOrcado.ToString() + "\r\n";
+            texto = texto + "Total Desconto " + orcamento.ValorDesconto.ToString() + "\r\n";
+            texto = texto + "Valor Final .. " + orcamento.ValorFinal.ToString() + "\r\n";
+
+
+            //...................................................................... rodape
+
+            texto = texto + "--------------------------- " + "\r\n";
+            texto = texto + "Roma Embalagens " + "\r\n";
+
+
+
+
+            ViewBag.FoneContato = contato.Celular;
+
+            ViewBag.Produtos = OrcamentoItem;
             ViewBag.Status = lst_status;
             ViewBag.Nome = cliente.Nome;
             ViewBag.NrOrcamento = orcamento.nrOrcamento;
             ViewBag.idOrcamento = orcamento.idOrcamento;
             ViewBag.Contatos = lst_contatos;
-
+            ViewBag.whatsapp = texto;
 
             return View(orcamento);
 
@@ -218,44 +293,191 @@ namespace Orcamento.Controllers
         // POST: ClienteController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(OrcamentoModel orcamento)
+        public async Task<ActionResult> Atualizar(OrcamentoModel orcamento)
         {
+            var orcamentoSalvo = await _orcamentoInterface.Salvar(orcamento);
+
+            return RedirectToAction("Edit", new { id = orcamento.idOrcamento, whatsapp = "" });
+        }
+
+            // POST: ClienteController/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(OrcamentoModel orcamento, string idAcao )
+        {
+
+            //var _orcamento = new OrcamentoModel
+            //{
+            //    idCliente = orcamento.idCliente,
+            //    idContato = orcamento.idContato,
+            //    idStatus = orcamento.idStatus,
+            //    idFormaPagto = orcamento.idFormaPagto,
+            //    idOrcamento = orcamento.idOrcamento,
+            //    idUsuario = 1,
+            //    Observacao = orcamento.Observacao,
+            //    ValorFinal = orcamento.ValorFinal,
+            //    ValorOrcado = orcamento.ValorOrcado,
+            //    ValorDesconto = orcamento.ValorDesconto,
+            //    dtEntrega = orcamento.dtEntrega
+
+            //};
+
+
+
+                var orcamentoSalvo = await _orcamentoInterface.Salvar(orcamento);
+
+            // verificar se o status sé entregue e alterar a dt de entrega
+            //var status = await _statusInterface.GetStatus("ORCAMENTO", "Entregue");
+            //if (orcamento.idStatus == status.idStatus) {
+            //    if (orcamento.dtEntrega == null)
+            //    {
+            //        _orcamento.dtEntrega = DateTime.Now;
+            //    }
+            //}
+
+            //if (idAcao == "imprimir")
+            //{
+            //    return RedirectToAction("imprimir", new { id = orcamentoSalvo.idOrcamento });
+            //};
+
+            //if (idAcao == "email")
+            //{
+            //    return RedirectToAction("email", new { id = orcamentoSalvo.idOrcamento });
+            //};
+
+            //if (idAcao == "Atualizar")
+            //{
+            //    return RedirectToAction("Edit", new { id = orcamento.idOrcamento, whatsapp = "" });
+            //};
+
+
+            return RedirectToAction("Index");
+            
+        }
+
+        public async Task<ActionResult>  Whatsapp(int id)
+        {
+
+            //...................................................................... salava o registro
+
+            var orcamento = await _orcamentoInterface.GetOrcamentoId(id);
+
+
+
+            //...................................................................... cabecalho
+
+            var cliente =  await _clienteInterface.GetClienteId(orcamento.idCliente);
+
+            var contato = await _contatoInterface.GetContatoId(orcamento.idCliente);
+
+            var OrcamentoItem = await _orcamentoItemInterface.GetOrcamentoId(orcamento.idOrcamento);
+
+            string texto = "";
+            texto = texto + "Orcamento: " + orcamento.nrOrcamento + "\r\n" ;
+            texto = texto + cliente.Nome + "\r\n";
+            texto = texto + contato.Nome + "\r\n";
+
+
+            //...................................................................... itens do produto
+            texto = texto + "--------------------------- " + "\r\n";
+            texto = texto + "Itens " + "\r\n";
+            texto = texto + "--------------------------- " + "\r\n";
+            texto = texto + " QTDE | DESCRICAO | VALOR " + "\r\n";
+            texto = texto + "--------------------------- " + "\r\n";
+
+            foreach (OrcamentoItemModel _orcamentoItem in OrcamentoItem)
+            {
+                texto = texto + _orcamentoItem.Quantidade.ToString("000,00") + " | " + _orcamentoItem.Nome + " | " +  (_orcamentoItem.Quantidade * _orcamentoItem.ValorUnitario) + "\r\n";
+            };
+            texto = texto + "--------------------------- " + "\r\n";
+            texto = texto + "Total Produtos " + orcamento.ValorOrcado.ToString() + "\r\n";
+            texto = texto + "Total Desconto " + orcamento.ValorDesconto.ToString() + "\r\n";
+            texto = texto + "Valor Final .. " + orcamento.ValorFinal.ToString() + "\r\n";
+
+
+            //...................................................................... rodape
+
+            texto = texto + "--------------------------- " + "\r\n";
+            texto = texto + "Roma Embalagens " + "\r\n";
+
+            //...................................................................... envia whatsapp
+
+
+
+            return RedirectToAction("Edit", new { id = orcamento.idOrcamento, whatsapp = texto });  
+
+        }
+
+
+
+        public async Task<ActionResult> CloneOrcamento(int id)
+        {
+
+
+            //............................... define nr do orcamento
+            var ls_prefixo = DateTime.Now.ToString("yyMMdd");
+            var orcamentos = await _orcamentoInterface.GetQtdeOrcamento();
+            int qtde = 1;
+            foreach (OrcamentoModel orc in orcamentos)
+            {
+                qtde++;
+            };
+            var nrOrcamento = ls_prefixo + qtde.ToString("000");
+
+            //...................................................................... salva o registro
+
+            var status = await _statusInterface.GetStatus("ORCAMENTO", "Elaboracao");
+
+            var orcamento = await _orcamentoInterface.GetOrcamentoId(id);
 
             var _orcamento = new OrcamentoModel
             {
                 idCliente = orcamento.idCliente,
                 idContato = orcamento.idContato,
-                idStatus = orcamento.idStatus,
                 idFormaPagto = orcamento.idFormaPagto,
-                idOrcamento = orcamento.idOrcamento,
                 idUsuario = 1,
                 Observacao = orcamento.Observacao,
                 ValorFinal = orcamento.ValorFinal,
                 ValorOrcado = orcamento.ValorOrcado,
                 ValorDesconto = orcamento.ValorDesconto,
-                dtEntrega = orcamento.dtEntrega
-
+                idStatus = status.idStatus,
+                dtCriacao = DateTime.Now,
+                dtValidade = DateTime.Now.AddDays(30)
             };
 
 
-
-                var orcamentoSalvo = await _orcamentoInterface.Salvar(_orcamento);
-
-                // verificar se o status sé entregue e alterar a dt de entrega
-                //var status = await _statusInterface.GetStatus("ORCAMENTO", "Entregue");
-                //if (orcamento.idStatus == status.idStatus) {
-                //    if (orcamento.dtEntrega == null)
-                //    {
-                //        _orcamento.dtEntrega = DateTime.Now;
-                //    }
-                //}
+            var orcamentoSalvo = await _orcamentoInterface.NovoOrcamento(_orcamento);
 
 
+            //............................................. copiando os itens
+
+            var OrcamentoItem = await _orcamentoItemInterface.GetOrcamentoId(orcamento.idOrcamento);
+
+            int seq = 1;
+            foreach (OrcamentoItemModel orcamentoItem in OrcamentoItem)
+            {
+
+                var orcamentoItemCopia = new OrcamentoItemModel
+                {
+                    idOrcamento = orcamentoSalvo.idOrcamento,
+                    idProduto = orcamentoItem.idProduto,
+                    Sequencial = seq,
+                    Nome = orcamentoItem.Nome,
+                    Quantidade = orcamentoItem.Quantidade,
+                    ValorUnitario = orcamentoItem.ValorUnitario,
+                    Observacao = orcamentoItem.Observacao,
+                    idUnidade = orcamentoItem.idUnidade
+                };
+                seq = seq + 1;
+
+                var novoitem = _orcamentoItemInterface.Salvar(orcamentoItemCopia);
+            };
 
 
-                return RedirectToAction("Index");
-            
+            return RedirectToAction("Edit", new { id = orcamentoSalvo.idOrcamento, whatsapp = ""});
+
         }
+
 
 
     }

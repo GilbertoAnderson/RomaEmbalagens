@@ -61,11 +61,22 @@ namespace Orcamento.Controllers
                 var  status = await _statusInterface.GetStatus("USUARIO", "ATIVO");
                 var ls_year = DateTime.Now.Year;
 
+
+                string celular = _usuario.Celular;
+                celular = celular.Replace(" ", "");
+                if (celular.Length > 2)
+                {
+                    string prefixo = celular.Substring(0, 2);
+                    string numero = celular.Substring(2, 8);
+                    celular = prefixo + " " + numero;
+                }
+
+
                 var _Newusuario = new UsuarioModel
                 {
                     Nome = _usuario.Nome,
                     Email = _usuario.Email,
-                    Celular = _usuario.Celular,
+                    Celular = celular,
                     idPerfil = _usuario.idPerfil,
                     idStatus = status.idStatus,
                     dtAtualizacao = DateTime.Now,
@@ -118,12 +129,21 @@ namespace Orcamento.Controllers
             if (ModelState.IsValid)
             {
 
+                string celular = _usuario.Celular;
+                celular = celular.Replace(" ", "");
+                if (celular.Length > 2)
+                {
+                    string prefixo  = celular.Substring(0, 2);
+                    string numero = celular.Substring(2, 8);
+                    celular = prefixo + " " + numero;
+                }
+
                 var _Newusuario = new UsuarioModel
                 {
                     idUsuario = _usuario.idUsuario,
                     Nome = _usuario.Nome,
                     Email = _usuario.Email,
-                    Celular = _usuario.Celular,
+                    Celular = celular,
                     idPerfil = _usuario.idPerfil,
                     idStatus = _usuario.idStatus,
                     dtNascimento = _usuario.dtNascimento,

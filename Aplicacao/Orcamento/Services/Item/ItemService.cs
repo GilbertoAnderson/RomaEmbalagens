@@ -65,7 +65,8 @@ namespace Orcamento.Services.Item
                 }
                 else
                 {
-                    return await _context.tblItem.Where(c => c.idTipoItem == tipo ).OrderBy(x => x.Nome).ToListAsync();
+                    var status = _context.tblStatus.FirstOrDefault(s => s.Objeto == "ITEM" && s.Descricao == "ATIVO");
+                    return await _context.tblItem.Where(c => c.idTipoItem == tipo && c.idStatus == status.idStatus).OrderBy(x => x.Nome).ToListAsync();
                 }
 
 

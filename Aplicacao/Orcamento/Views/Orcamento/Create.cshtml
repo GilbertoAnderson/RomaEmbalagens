@@ -39,8 +39,14 @@
 
                 <hr />
                 <row>
-                    <a asp-area="" asp-controller="Orcamento" asp-action="Index" class="btn btn-secondary">Cancelar</a>
+                    <a  asp-controller="Orcamento" asp-action="Index" class="btn btn-secondary">Cancelar</a>
                     &nbsp;
+
+                    <a href="@Url.Action("Create","Cliente")" title='Novo Cliente'>
+                        <input type="button" value="Novo Cliente" class="btn btn-success" />
+                    </a> 
+
+                    &nbsp; 
                     <input type="submit" value="Salvar" class="btn btn-primary" />
                 </row>
 

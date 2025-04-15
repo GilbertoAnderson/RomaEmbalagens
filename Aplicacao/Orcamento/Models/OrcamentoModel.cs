@@ -28,6 +28,10 @@ namespace Orcamento.Models
 
         public DateTime? dtEntrega { get; set; }
 
+        public decimal? percMargem { get; set; }
+        public decimal? percImposto { get; set; }
+        public decimal? ValorMargem { get; set; }
+        public decimal? ValorImposto { get; set; }
         public decimal? ValorOrcado { get; set; }
 
         public decimal? ValorDesconto { get; set; }

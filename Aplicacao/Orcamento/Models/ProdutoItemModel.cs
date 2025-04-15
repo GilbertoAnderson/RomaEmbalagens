@@ -13,9 +13,11 @@ namespace Orcamento.Models
 
         public int idItem { get; set; }
 
-        public decimal? Quantidade { get; set; }
+        public string Nome { get; set; }
 
-        public decimal? Valor { get; set; }
+        public decimal Quantidade { get; set; }
+
+        public decimal Valor { get; set; }
 
         public string? Observacao { get; set; }
 

@@ -15,6 +15,9 @@
             <form method="post" asp-action="Edit" asp-controller="Produto" enctype="multipart/form-data">
 
 
+                <input type="hidden" asp-for="idProduto" class="form-control" />
+
+
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="mb-1">
@@ -56,8 +59,19 @@
                     <div class="col-lg-8">
                         @Html.Partial("_ProdutoItem", new { id = @ViewBag.idProduto })
                     </div>
-                </div> 
-                
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Valor Total:</label>
+                            <input type="text" asp-for="Valor" class="form-control shadow-none" readonly />
+                            <span class="text-danger" asp-asp-validation-for="ValorOrcado"></span>
+                        </div>
+                    </div>
+                </div>
+
 
 
                 <div class="row">
@@ -81,7 +95,7 @@
                 <row>
                     <a asp-area="" asp-controller="Produto" asp-action="Index" class="btn btn-secondary">Cancelar</a>
                     &nbsp;
-                    <input type="submit" value="Adicionar Materiais e Serviços" class="btn btn-primary" />
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
                 </row>
 
             </form>
@@ -89,3 +103,43 @@
         </div>
     </div>
 </div>
+
+
+
+@section scripts {
+
+    <script type="text/javascript">
+
+
+
+
+        $(document).ready(function () {
+
+
+
+
+        });
+
+
+
+
+         function DeleteItem() {
+
+
+            var r = confirm("Atenção\n\nConfirme a exclusão deste item?");
+
+            if (r == false) {
+                return false;
+            }
+
+
+        }
+
+
+
+
+
+
+
+    </script>
+}

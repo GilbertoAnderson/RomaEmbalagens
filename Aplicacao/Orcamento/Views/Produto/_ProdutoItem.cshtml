@@ -4,7 +4,7 @@
 }
 <div style="border-style:dashed; border-color:gray; padding:10px; margin-top:10px;">
     <row class="mt-2">
-        <div class="text-left " style="display: inline">,
+        <div class="text-left " style="display: inline">
             <a href="@Url.Action("Create", new { id = @ViewBag.idProduto, Controller = "ProdutoItem"})" title='Novo Item'> <i class='glyphicon glyphicon-plus-sign'> </i></a>&nbsp;
 
 
@@ -21,7 +21,8 @@
                 <tr>
                     <th scope="col">Produto</th>
                     <th scope="col">Qtde</th>
-                    <th scope="col">Valor</th>
+                    <th  align="right">Valor Unitário</th>
+                    <th  align="right">Valor Total</th>
                     <th></th>
                 </tr>
             </thead>
@@ -29,16 +30,20 @@
                 @foreach (var item in @ViewBag.Itens)
                 {
 
+                    var vlrTotal = item.Valor * item.Quantidade;
                     <tr>
-                        <td>@item.idItem</td>
+                        <td>@item.Nome</td>
                         <td>@item.Quantidade</td>
-                        <td>@item.Valor</td>
+                        <td align="right">@item.Valor</td>
+                        <td align="right">
+                            @Html.Raw(@vlrTotal.ToString("C2"))
+                        </td>
                         <td>
                             <a href="@Url.Action("Edit", new { id = item.idProdutoItem , Controller = "ProdutoItem"})" title='Editar'> <i class='glyphicon glyphicon-pencil'> </i></a>&nbsp;
- 
+                            &nbsp;&nbsp;
+                            <a href="@Url.Action("Delete", new { id = item.idProdutoItem , Controller = "ProdutoItem"})" title='Excluir' onclick="return DeleteItem();"> <i class='glyphicon glyphicon-remove' style="color:darkred;" title="excluir"> </i></a>&nbsp;
+                            &nbsp;&nbsp;
                         </td>
-
-
 
                         </tr>
                     }

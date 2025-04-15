@@ -89,6 +89,22 @@ namespace Orcamento.Services.Orcamento
         }
 
 
+        public async Task<OrcamentoModel> NovoOrcamento(OrcamentoModel orcamento)
+        {
+            try
+            {
+
+                _context.Add(orcamento);
+                await _context.SaveChangesAsync();
+
+                return orcamento;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
 
         public async Task<OrcamentoModel> Salvar(OrcamentoModel orcamento)
         {
@@ -112,6 +128,10 @@ namespace Orcamento.Services.Orcamento
                 _orcamento.ValorOrcado = orcamento.ValorOrcado;
                 _orcamento.ValorDesconto = orcamento.ValorDesconto;
                 _orcamento.ValorFinal = orcamento.ValorFinal;
+                _orcamento.ValorImposto = orcamento.ValorImposto;
+                _orcamento.ValorMargem = orcamento.ValorMargem;
+                _orcamento.percImposto = orcamento.percImposto;
+                _orcamento.percMargem = orcamento.percMargem;
                 _orcamento.Observacao = orcamento.Observacao;
 
 

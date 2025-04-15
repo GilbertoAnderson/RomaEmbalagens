@@ -101,12 +101,20 @@ namespace Orcamento.Controllers
 
                 var itens = await _produtoItemInterface.GetAllItemProduto(id);
 
+                decimal _vlrProduto = 0;
+                foreach (ProdutoItemModel item in itens)    
+                {
+                    _vlrProduto = _vlrProduto + (item.Quantidade * item.Valor);
+                };
+                produto.Valor = _vlrProduto;
+
                 var _status = await _statusInterface.GetAllStatus("PRODUTO");
                 var lst_status = _status.Select(c => new SelectListItem
                 {
                     Value = c.idStatus.ToString(),
                     Text = c.Descricao
                 });
+
 
                 ViewBag.idProduto = id;
                 ViewBag.Status = lst_status;
@@ -131,18 +139,17 @@ namespace Orcamento.Controllers
             if (ModelState.IsValid)
             {
 
-                var _novoProduto = new ProdutoModel
-                {
-                    idProduto = _produto.idProduto,
-                    Nome = _produto.Nome,
-                    idUnidade = _produto.idUnidade,
-                    Observacao = _produto.Observacao,
-                    idStatus = _produto.idStatus,
-                    Valor = _produto.Valor,
-                    dtAtualizacao = DateTime.Now
-                };
 
-                var produto = await _produtoInterface.Salvar(_novoProduto);
+                var itens = await _produtoItemInterface.GetAllItemProduto(_produto.idProduto);
+                decimal _vlrProduto = 0;
+                foreach (ProdutoItemModel item in itens)
+                {
+                    _vlrProduto = _vlrProduto + (item.Quantidade * item.Valor);
+                };
+                _produto.Valor = _vlrProduto;
+
+
+                var produto = await _produtoInterface.Salvar(_produto);
 
                 return RedirectToAction("Index");
 

@@ -126,5 +126,25 @@ namespace Orcamento.Services.ProdutoItem
             }
         }
 
+        
+
+        public async Task<ProdutoItemModel> ExcluirItem(ProdutoItemModel Item)
+        {
+            try
+            {
+                
+                _context.Remove(Item);
+                var v = await _context.SaveChangesAsync();
+
+                return Item;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
     }
 }

@@ -84,6 +84,15 @@ namespace Orcamento.Controllers
         {
             if (ModelState.IsValid)
             {
+                //.................................. trata o nr celular
+                string celular = _contato.Celular;
+                celular = celular.Replace(" ", "");
+                if (celular.Length > 2)
+                {
+                    string prefixo = celular.Substring(0, 2);
+                    string numero = celular.Substring(2, 8);
+                    _contato.Celular = prefixo + " " + numero;
+                }
 
                 var contato = await _contatoInterface.Novo(_contato);
 
@@ -116,6 +125,7 @@ namespace Orcamento.Controllers
 
                 ViewBag.Status = lst_status;
                 ViewBag.Nome = contato.Nome;
+                ViewBag.idCliente = contato.idCliente;
 
                 return View("Edit", contato);
             }
@@ -136,12 +146,21 @@ namespace Orcamento.Controllers
             if (ModelState.IsValid)
             {
 
+                string celular = contato.Celular;
+                celular = celular.Replace(" ", "");
+                if (celular.Length >=11 )
+                {
+                    string prefixo = celular.Substring(0, 2);
+                    string numero = celular.Substring(2, 8);
+                    celular = prefixo + " " + numero;
+                }
+
                 var _contato = new ContatoModel
                 {
                     idContato = contato.idContato,
                     Nome = contato.Nome,
                     Email = contato.Email,
-                    Celular = contato.Celular,
+                    Celular = celular,
                     idCliente = contato.idCliente,
                     idStatus = contato.idStatus,
                     dtNascimento = contato.dtNascimento,

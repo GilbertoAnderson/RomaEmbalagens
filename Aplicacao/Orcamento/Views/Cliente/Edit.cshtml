@@ -11,6 +11,7 @@
             <form method="post" asp-action="Edit" asp-controller="Cliente" enctype="multipart/form-data">
 
                 <input type="hidden" asp-for="IdCliente" class="form-control" />
+                <input type="hidden" id="idAcao" value="Salvar" class="form-control" />
 
                 <div class="row">
                     <div class="col-lg-4">
@@ -120,6 +121,15 @@
                 <row>
                     <a asp-area="" asp-controller="Cliente" asp-action="Index" class="btn btn-secondary">Cancelar</a>
                     &nbsp;
+
+
+@* 
+                    &nbsp;
+                    <input type="submit" id="btnNovoOrcamento" value="NovoOrcamento" class="btn btn-success" onclick="return NovoOrcamento();" />
+
+ *@
+
+                    &nbsp;
                     <input type="submit" value="Salvar" class="btn btn-primary" />
                 </row>
 
@@ -135,3 +145,21 @@
         </div>
     </div>
 </div>
+
+
+
+
+@section scripts {
+
+    <script type="text/javascript">
+
+
+        function AtualizaPagina() {
+            document.getElementById('idAcao').value = "NovoOrcamento";
+
+        }
+
+    </script>
+}
+
+

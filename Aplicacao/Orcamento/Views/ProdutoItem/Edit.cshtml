@@ -1,6 +1,6 @@
 ﻿@model Orcamento.Models.ProdutoItemModel
 @{
-    ViewData["Title"] = "Novo Produto item";
+    ViewData["Title"] = "Produto item";
 }
 <div class="py-5">
     <div class="container">
@@ -8,12 +8,12 @@
         <h1>@ViewBag.NomeProduto</h1>
         <hr />
         <div class="form-horizontal">
-            <form method="post" asp-action="Create" asp-controller="ProdutoItem" enctype="multipart/form-data">
+            <form method="post" asp-action="Edit" asp-controller="ProdutoItem" enctype="multipart/form-data">
 
                 <input type="hidden" asp-for="idProduto" value="@ViewBag.idProduto" class="form-control" />
-                <input type="hidden" asp-for="Nome" value="." class="form-control" />
+                <input type="hidden" asp-for="idProdutoItem" value="@ViewBag.idProdutoItem" class="form-control" />
+                
 
- 
                 <div class="row">
                     <div class="col-lg-4">
 
@@ -22,11 +22,23 @@
                             @Html.DropDownList("idItem",
                                      ViewBag.Item,
                                      "Selecione o item do produto",
-                                     new { @class = "form-control", @onchange = "javascript:onChangeFunction();" }
+                                     new { @class = "form-control", 
+                                           @onchange = "javascript:onChangeFunction();" }
                                      )
                         </div>
                     </div>
-                </div> 
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Nome:</label>
+                            <input type="decimal" asp-for="Nome" class="form-control shadow-none" />
+                            <span class="text-danger" asp-asp-validation-for="Nome"></span>
+                        </div>
+                    </div>
+                </div>
 
 
                 <div class="row">
@@ -62,14 +74,30 @@
                 </div>
 
 
+                <div class="row">
+                    <div class="col-lg-2">
+
+                        <div class="mb-1">
+                            <label class="form-label mt-3">Status:</label>
+                            @Html.DropDownList("idStatus",
+                                     ViewBag.Status,
+                                     "Selecione o Status",
+                                     new
+                                     {
+                                         @class = "form-control"
+                                     }
+                                     )
+                        </div>
+                    </div>
+                </div>
 
 
                 <hr />
                 <row>
                     <a href="@Url.Action("Edit", new { id = @ViewBag.idProduto, Controller = "Produto"})" title='Cancelar'>
                         <input type="button" value="Cancelar" class="btn btn-secondary" />
-                    </a>&nbsp;
-
+                    </a>
+                    &nbsp;
                     &nbsp;
                     <input type="submit" value="Salvar" class="btn btn-primary" />
                 </row>
@@ -82,7 +110,7 @@
 
 
 <script type="text/javascript">
-    
+
 
     function onChangeFunction(){
 
@@ -92,11 +120,11 @@
         var comprimento = gettext.length;
         var inicio = gettext.indexOf("|") + 1;
         var valor = gettext.substring(inicio, comprimento);
-
+        var nome  = gettext.substring(0, inicio - 1);
 
         document.getElementById("Valor").value = valor;
+        document.getElementById("Nome").value = nome;
 
-       document.getElementById('Observacao').value = result;
     }
 
 </script>

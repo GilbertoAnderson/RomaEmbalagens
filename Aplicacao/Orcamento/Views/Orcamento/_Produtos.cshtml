@@ -22,8 +22,8 @@
                 <tr>
                     <th scope="col">Qtde</th>
                     <th scope="col">Produto</th>
-                    <th scope="col">Vlr Unitario</th>
-                    <th scope="col">Vlr Total</th>
+                    <th scope="col" align="right">Vlr Unitario</th>
+                    <th scope="col" align="right">Vlr Total</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -38,8 +38,8 @@
                     <tr>
                         <td>@produto.Quantidade</td>
                         <td>@produto.Nome</td>
-                        <td>@produto.ValorUnitario</td>
-                        <td> 
+                        <td align="right">@produto.ValorUnitario</td>
+                        <td align="right">
                             @Html.Raw(@vlrTotal.ToString("C2"))
                         
                         </td>

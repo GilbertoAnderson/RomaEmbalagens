@@ -3,6 +3,7 @@ using System.Net.NetworkInformation;
 using Microsoft.EntityFrameworkCore;
 using Orcamento.Data;
 using Orcamento.Models;
+using Orcamento.Services.Status;
 
 namespace Orcamento.Services.Produto
 {
@@ -45,7 +46,10 @@ namespace Orcamento.Services.Produto
                 }
                 else
                 {
-                    return await _context.tblProduto.OrderBy(c => c.Nome).ToListAsync();
+
+
+                    var status = _context.tblStatus.FirstOrDefault(s => s.Objeto == "PRODUTO" && s.Descricao == "ATIVO");
+                    return await _context.tblProduto.Where(c =>c.idStatus==status.idStatus).OrderBy(c => c.Nome).ToListAsync();
                 }
 
             }
@@ -84,7 +88,7 @@ namespace Orcamento.Services.Produto
                 var _produto = await _context.tblProduto.FirstOrDefaultAsync(c => c.idProduto == produto.idProduto);
 
                 _produto.Nome = produto.Nome;
-                _produto.dtAtualizacao = produto.dtAtualizacao;
+                _produto.dtAtualizacao = DateTime.Now;
                 _produto.Observacao = produto.Observacao;
                 _produto.Valor = produto.Valor;
                 _produto.idUnidade = produto.idUnidade;

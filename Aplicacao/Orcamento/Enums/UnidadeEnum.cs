@@ -3,9 +3,10 @@
     public enum UnidadeEnum
     {
         Folha,
-        Kilo,
-        Peça,
         Horas, 
+        Kilo,
+        MIlheiro,
+        Peça,
 
     }
 }

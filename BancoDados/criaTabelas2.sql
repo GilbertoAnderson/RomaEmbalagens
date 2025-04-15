@@ -310,6 +310,18 @@ begin
 	INSERT INTO tblDominios(Objeto,Codigo,Descricao)
 	VALUES('COR','21','2 X 1')
 	
+	
+	
+	INSERT INTO tblDominios(Objeto,Codigo,Descricao)
+	VALUES('MARGEM','01','30,00')
+	INSERT INTO tblDominios(Objeto,Codigo,Descricao)
+	VALUES('IMPOSTO','01','10,00')
+	
+	
+	/* 
+	 SELECT * FROM TBLdOMINIOS
+	
+	*/
 end
 
 
@@ -642,7 +654,10 @@ begin
 		values('Caixa Pizza 25 Quadrada', 'observaçao', 105.23, '01-15-2001',
 				(select idDominio from tblDominios where Objeto= 'UNIDADE' and Codigo = 'PC'),
 				(select idStatus from tblStatus where Objeto = 'PRODUTO' and Descricao = 'ATIVO'))
-						
+			
+						update tblProduto
+						set idUnidade = 2 
+						where idProduto = 3			
 										
 	*/
 end
@@ -734,7 +749,12 @@ begin
 		[dtValidade]	datetime,
 		[dtEntrega]		datetime,
 		
+		[percMargem]	decimal(5,2),
+		[percImposto]	decimal(5,2),
+		
 		[ValorOrcado]	decimal(18,2),
+		[ValorMargem]	decimal(18,2),
+		[ValorImposto]	decimal(18,2),
 		[ValorDesconto]	decimal(18,2),
 		[ValorFinal]	decimal(18,2),
 		
@@ -796,8 +816,17 @@ begin
 				             (select idStatus  from tblStatus   where Objeto = 'ORCAMENTO' and Descricao = 'Elaboracao'),
 	                        '250206001', '02-06-2025',  200.00, 50.00, 150.00, 'observacao' )
 	 
+	 alter table tblOrcamento add
+		[percMargem]	decimal(5,2),
+		[percImposto]	decimal(5,2),
+		[ValorMargem]	decimal(18,2),
+		[ValorImposto]	decimal(18,2)
 	 
-	 
+	 alter table tblOrcamento add
+		[ValorImposto]	decimal(18,2)
+		
+	 alter table tblOrcamento drop column
+		[ValorIMposto]	
 	 
 	 */
 

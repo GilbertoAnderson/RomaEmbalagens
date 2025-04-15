@@ -7,6 +7,7 @@ using Orcamento.Services.Status;
 using Orcamento.Services.Contato;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Net.NetworkInformation;
+using Orcamento.Services.Orcamento;
 
 
 namespace Orcamento.Controllers
@@ -17,12 +18,15 @@ namespace Orcamento.Controllers
         private readonly IClienteInterface _clienteInterface;
         private readonly IContatoInterface _contatoInterface;
         private readonly IStatusInterface _statusInterface;
+        private readonly IOrcamentoInterface _orcamentoInterface;
 
-        public ClienteController(IClienteInterface clienteInterface, IStatusInterface statusInterface, IContatoInterface contatoInterface)
+        public ClienteController(IClienteInterface clienteInterface, IStatusInterface statusInterface,
+            IContatoInterface contatoInterface, IOrcamentoInterface orcamentoInterface)
         {
             _clienteInterface = clienteInterface;
             _statusInterface = statusInterface;
             _contatoInterface = contatoInterface;
+            _orcamentoInterface = orcamentoInterface;
 
         }
 
@@ -65,10 +69,20 @@ namespace Orcamento.Controllers
                 //    endereco.CEP = _CEP
                 //};
 
+                string celular = _cliente.Telefone;
+                celular = celular.Replace(" ", "");
+                if (celular.Length > 2)
+                {
+                    string prefixo = celular.Substring(0, 2);
+                    string numero = celular.Substring(2, 8);
+                    celular = prefixo + " " + numero;
+                }
+
+
                 var _clientefull = new ClienteModel
                 {
                     Nome = _cliente.Nome,
-                    Telefone = _cliente.Telefone,
+                    Telefone = celular,
                     CNPJ = _cliente.CNPJ,
 
                     Endereco = "",
@@ -122,7 +136,7 @@ namespace Orcamento.Controllers
         // POST: ClienteController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int id, ClienteModel cliente)
+        public async Task<ActionResult> Edit(int id, ClienteModel cliente, string idAcao)
         {
             if (ModelState.IsValid)
             {
@@ -141,6 +155,45 @@ namespace Orcamento.Controllers
                 };
 
                 var clienteSalvo = await _clienteInterface.Salvar(_cliente);
+
+
+                if (idAcao == "NovoOrcamento")
+                {
+                    //............................... define nr do orcamento
+                    var ls_prefixo = DateTime.Now.ToString("yyMMdd");
+                    var orcamentos = await _orcamentoInterface.GetQtdeOrcamento();
+                    int qtde = 1;
+                    foreach (OrcamentoModel orc in orcamentos)
+                    {
+                        qtde++;
+                    };
+                    var nrOrcamento = ls_prefixo + qtde.ToString("000");
+
+                    var status = await _statusInterface.GetStatus("ORCAMENTO", "Elaboracao");
+
+
+                    var _orcamentoNovo = new OrcamentoModel
+                    {
+                        nrOrcamento = nrOrcamento,
+                        idCliente = cliente.IdCliente,
+                        idStatus = status.idStatus,
+                        idUsuario = 1,
+                        idContato = 1,
+                        idFormaPagto = 1,
+                        dtCriacao = DateTime.Now,
+                        dtValidade = DateTime.Now.AddDays(30)
+
+                    };
+
+                    var orcamento = await _orcamentoInterface.NovoOrcamento(_orcamentoNovo);
+
+
+                    return RedirectToAction("Edit", new { id = nrOrcamento, whatsapp = "" });
+
+
+                };
+
+
 
                 return RedirectToAction("Index");
             }

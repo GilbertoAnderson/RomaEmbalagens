@@ -57,13 +57,12 @@
 
                         <div class="card w-80">
                             <div class="card-body">
-                                <h3 class="card-title"> @produto.idProduto </h3>
+                                <h3 class="card-title"> @produto.Nome </h3>
                                 <p class="card-text">
                                     <div style="border:2px">
                                         <span>@produto.Quantidade </span>
                                         <span>@produto.Valor </span>
                                     </div>
-
                                 </p>
                                 <a href="@Url.Action("Edit", new { id = produto.idProdutoItem }) " class="btn btn-secondary">editar ...</a>
                             </div>

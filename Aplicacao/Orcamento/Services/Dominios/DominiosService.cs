@@ -41,5 +41,19 @@ namespace Orcamento.Services.Dominios
                 throw new Exception(ex.Message);
             }
         }
+
+
+        public async Task<DominiosModel> GetDominio(string objeto)
+        {
+            try
+            {
+                return await _context.tblDominios.FirstOrDefaultAsync(c => c.Objeto == objeto);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }

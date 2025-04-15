@@ -11,7 +11,25 @@
 
 <div class="text-center">
 
+
     <div class="row g-3">
+
+
+        <div class="col-4">
+            <a href="  @Url.Action("Index", "Cliente")   " title='Cliente' style="text-decoration:none">
+                <div class="cardhome text-center border-0 shadow rounded-0 p-3 my-3 mx-" style="max-width: 22rem; min-height:16rem;">
+                    <div class="icon">
+                        <h1> <i class="bi bi-people" title="Cliente"></i></h1>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title fw-bold">Clientes<br /><br /></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+
         <div class="col-4">
            @*  @Url.Action("Index", "Orcamento") *@
             <a href="@Url.Action("Index", "Orcamento")" title='Orçamentos' style="text-decoration:none">
@@ -26,6 +44,7 @@
             </a>
         </div>
 
+        <!-- 
 
         <div class="col-4">
              @* @Url.Action("Index", "OrdemServico") *@
@@ -41,19 +60,7 @@
             </a>
         </div>
 
-
-        <div class="col-4">
-                <a href="  @Url.Action("Index", "Cliente")   " title='Cliente' style="text-decoration:none">
-                <div class="cardhome text-center border-0 shadow rounded-0 p-3 my-3 mx-" style="max-width: 22rem; min-height:16rem;">
-					<div class="icon" >
-                        <h1> <i class="bi bi-people" title="Cliente"></i></h1>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-title fw-bold">Clientes<br /><br /></p>
-                    </div>
-                </div>
-            </a>
-        </div>
+		-->
 
 
         <div class="col-4">
@@ -69,7 +76,54 @@
             </a>
         </div>
 
+
+
         <div class="col-4">
+            <a href="@Url.Action( "IndexMaterial", "Item")" title='Materiais' style="text-decoration:none">
+                <div class="cardhome text-center border-0 shadow rounded-0 p-3 my-3 mx-" style="max-width: 22rem; min-height:16rem;">
+                    <div class="icon">
+                        <h1><i class="bi bi-boxes" title="Materiais"></i></h1>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title fw-bold">Materiais</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+        <div class="col-4">
+            <a href="@Url.Action("IndexServico", "Item")" title='Serviços' style="text-decoration:none">
+                <div class="cardhome text-center border-0 shadow rounded-0 p-3 my-3 mx-" style="max-width: 22rem; min-height:16rem;">
+                    <div class="icon">
+                        <h1><i class="bi bi-person-fill-gear" title="Serviços"></i></h1>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title fw-bold">Serviços</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+
+
+        <div class="col-4">
+            <a href="  @Url.Action("Index", "Usuario")   " title='Usuários' style="text-decoration:none">
+                <div class="cardhome text-center border-0 shadow rounded-0 p-3 my-3 mx-" style="max-width: 22rem; min-height:16rem;">
+                    <div class="icon">
+                        <h1> <i class="bi bi-person-badge" title="Usuários"></i></h1>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title fw-bold">Usuários</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+        <!--
+                <div class="col-4">
             <a href="@Url.Action("Index", "Admin")" title='Admin' style="text-decoration:none">
                 <div class="cardhome text-center border-0 shadow rounded-0 p-3 my-3 mx-" style="max-width: 22rem;min-height:16rem;">
                     <div class="icon">
@@ -81,7 +135,7 @@
                 </div>
             </a>
         </div>
-
+        -->
     </div>
 
 </div>

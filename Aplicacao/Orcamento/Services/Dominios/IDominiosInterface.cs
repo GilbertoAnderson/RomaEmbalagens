@@ -7,5 +7,7 @@ namespace Orcamento.Services.Dominios
         Task<DominiosModel> GetDominioId(int id);
 
         Task<List<DominiosModel>> GetDominiosObjeto(string objeto);
+
+        Task<DominiosModel> GetDominio(string objeto);
     }
 }

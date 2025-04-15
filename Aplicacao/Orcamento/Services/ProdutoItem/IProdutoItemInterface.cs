@@ -16,5 +16,9 @@ namespace Orcamento.Services.ProdutoItem
 
         Task<ProdutoItemModel> Salvar(ProdutoItemModel item);
 
+
+        Task<ProdutoItemModel> ExcluirItem(ProdutoItemModel item);
+        
+
     }
 }
